@@ -1,0 +1,142 @@
+[
+  {
+    "id": "d-process-add",
+    "category": "process",
+    "operation": "ADD",
+    "object_key": "process:7460:cachehost.exe",
+    "before": null,
+    "after": {
+      "name": "CacheHost.exe",
+      "pid": 7460,
+      "parent": "services.exe",
+      "ppid": 680,
+      "executable_path": "C:\\ProgramData\\CsgLab\\Stage\\CacheHost.exe",
+      "command_line": "C:\\ProgramData\\CsgLab\\Stage\\CacheHost.exe --worker",
+      "integrity_level": "System",
+      "signed": "true",
+      "publisher": "Northstar Endpoint Tools",
+      "sha256": "c4b12d77a8e94024f631d5a36b7c92044a16efbf51d903e0"
+    },
+    "before_snapshot_index": 0,
+    "after_snapshot_index": 1,
+    "before_snapshot_id": "case-04-A-snapshot-1",
+    "after_snapshot_id": "case-04-A-snapshot-2",
+    "observation_window": {
+      "start": "2026-09-26T09:30:00+00:00",
+      "end": "2026-09-26T10:00:00+00:00"
+    }
+  },
+  {
+    "id": "d-service-auto",
+    "category": "service",
+    "operation": "MODIFY",
+    "object_key": "service:devicecachesvc",
+    "before": {
+      "service_name": "DeviceCacheSvc",
+      "display_name": "Windows CacheHost.exe Maintenance",
+      "status": "running",
+      "start_mode": "manual",
+      "binary_path": "C:\\ProgramData\\CsgLab\\Stage\\CacheHost.exe",
+      "account": "LocalSystem",
+      "service_type": "own_process",
+      "publisher": "Northstar Endpoint Tools",
+      "file_version": "3.8.2.17",
+      "description": "Local inventory cache coordination"
+    },
+    "after": {
+      "service_name": "DeviceCacheSvc",
+      "display_name": "Windows CacheHost.exe Maintenance",
+      "status": "running",
+      "start_mode": "automatic",
+      "binary_path": "C:\\ProgramData\\CsgLab\\Stage\\CacheHost.exe",
+      "account": "LocalSystem",
+      "service_type": "own_process",
+      "publisher": "Northstar Endpoint Tools",
+      "file_version": "3.8.2.17",
+      "description": "Local inventory cache coordination"
+    },
+    "before_snapshot_index": 0,
+    "after_snapshot_index": 1,
+    "before_snapshot_id": "case-04-A-snapshot-1",
+    "after_snapshot_id": "case-04-A-snapshot-2",
+    "observation_window": {
+      "start": "2026-09-26T09:30:00+00:00",
+      "end": "2026-09-26T10:00:00+00:00"
+    }
+  },
+  {
+    "id": "d-listener-add",
+    "category": "listener",
+    "operation": "ADD",
+    "object_key": "listener:tcp:0.0.0.0:8448",
+    "before": null,
+    "after": {
+      "protocol": "tcp",
+      "local_address": "0.0.0.0",
+      "local_port": 8448,
+      "pid": "7520",
+      "process_name": "CacheHost.exe",
+      "executable_path": "C:\\ProgramData\\CsgLab\\Stage\\CacheHost.exe",
+      "state": "LISTENING"
+    },
+    "before_snapshot_index": 1,
+    "after_snapshot_index": 2,
+    "before_snapshot_id": "case-04-A-snapshot-2",
+    "after_snapshot_id": "case-04-A-snapshot-3",
+    "observation_window": {
+      "start": "2026-09-26T10:00:00+00:00",
+      "end": "2026-09-26T10:30:00+00:00"
+    }
+  },
+  {
+    "id": "d-listener-process-add",
+    "category": "process",
+    "operation": "ADD",
+    "object_key": "process:7520:cachehost.exe",
+    "before": null,
+    "after": {
+      "name": "CacheHost.exe",
+      "pid": "7520",
+      "parent": "powershell.exe",
+      "ppid": "7480",
+      "executable_path": "C:\\ProgramData\\CsgLab\\Stage\\CacheHost.exe",
+      "command_line": "C:\\ProgramData\\CsgLab\\Stage\\CacheHost.exe --serve 8448",
+      "integrity_level": "System",
+      "signed": "true",
+      "publisher": "Northstar Endpoint Tools",
+      "sha256": "c4b12d77a8e94024f631d5a36b7c92044a16efbf51d903e0"
+    },
+    "before_snapshot_index": 1,
+    "after_snapshot_index": 2,
+    "before_snapshot_id": "case-04-A-snapshot-2",
+    "after_snapshot_id": "case-04-A-snapshot-3",
+    "observation_window": {
+      "start": "2026-09-26T10:00:00+00:00",
+      "end": "2026-09-26T10:30:00+00:00"
+    }
+  },
+  {
+    "id": "d-task-add",
+    "category": "scheduled_task",
+    "operation": "ADD",
+    "object_key": "task:\\microsoft\\windows\\diagnostics\\cachehealth",
+    "before": null,
+    "after": {
+      "task_name": "\\Microsoft\\Windows\\Diagnostics\\CacheHealth",
+      "action": "C:\\ProgramData\\CsgLab\\Stage\\CacheHost.exe --serve 8448",
+      "run_as": "SYSTEM",
+      "enabled": true,
+      "trigger": "At startup",
+      "author": "SYSTEM",
+      "hidden": "true"
+    },
+    "before_snapshot_index": 1,
+    "after_snapshot_index": 2,
+    "before_snapshot_id": "case-04-A-snapshot-2",
+    "after_snapshot_id": "case-04-A-snapshot-3",
+    "observation_window": {
+      "start": "2026-09-26T10:00:00+00:00",
+      "end": "2026-09-26T10:30:00+00:00"
+    }
+  }
+]

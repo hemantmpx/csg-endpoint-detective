@@ -1,0 +1,99 @@
+[
+  {
+    "id": "t-service-auto",
+    "source": "csg",
+    "host": "WIN-LAB-01",
+    "observed_at": "2026-09-26T09:39:22+00:00",
+    "category": "service",
+    "object_key": "service:devicecachesvc",
+    "transition": "MODIFY",
+    "before": {
+      "start_mode": "manual"
+    },
+    "after": {
+      "start_mode": "automatic"
+    }
+  },
+  {
+    "id": "t-process-start",
+    "source": "csg",
+    "host": "WIN-LAB-01",
+    "observed_at": "2026-09-26T09:39:30+00:00",
+    "category": "process",
+    "object_key": "process:7460:cachehost.exe",
+    "transition": "START",
+    "before": null,
+    "after": {
+      "name": "CacheHost.exe",
+      "pid": 7460,
+      "parent": "services.exe",
+      "ppid": 680,
+      "executable_path": "C:\\ProgramData\\CsgLab\\Stage\\CacheHost.exe",
+      "command_line": "C:\\ProgramData\\CsgLab\\Stage\\CacheHost.exe --worker",
+      "integrity_level": "System",
+      "signed": "true",
+      "publisher": "Northstar Endpoint Tools",
+      "sha256": "c4b12d77a8e94024f631d5a36b7c92044a16efbf51d903e0"
+    }
+  },
+  {
+    "id": "t-task-create",
+    "source": "csg",
+    "host": "WIN-LAB-01",
+    "observed_at": "2026-09-26T10:08:53+00:00",
+    "category": "scheduled_task",
+    "object_key": "task:\\microsoft\\windows\\diagnostics\\cachehealth",
+    "transition": "CREATE",
+    "before": null,
+    "after": {
+      "task_name": "\\Microsoft\\Windows\\Diagnostics\\CacheHealth",
+      "action": "C:\\ProgramData\\CsgLab\\Stage\\CacheHost.exe --serve 8448",
+      "run_as": "SYSTEM",
+      "enabled": true,
+      "trigger": "At startup",
+      "author": "SYSTEM",
+      "hidden": "true"
+    }
+  },
+  {
+    "id": "t-listener-process-start",
+    "source": "csg",
+    "host": "WIN-LAB-01",
+    "observed_at": "2026-09-26T10:08:55+00:00",
+    "category": "process",
+    "object_key": "process:7520:cachehost.exe",
+    "transition": "START",
+    "before": null,
+    "after": {
+      "name": "CacheHost.exe",
+      "pid": "7520",
+      "parent": "powershell.exe",
+      "ppid": "7480",
+      "executable_path": "C:\\ProgramData\\CsgLab\\Stage\\CacheHost.exe",
+      "command_line": "C:\\ProgramData\\CsgLab\\Stage\\CacheHost.exe --serve 8448",
+      "integrity_level": "System",
+      "signed": "true",
+      "publisher": "Northstar Endpoint Tools",
+      "sha256": "c4b12d77a8e94024f631d5a36b7c92044a16efbf51d903e0"
+    }
+  },
+  {
+    "id": "t-listener-open",
+    "source": "csg",
+    "host": "WIN-LAB-01",
+    "observed_at": "2026-09-26T10:08:57+00:00",
+    "category": "listener",
+    "object_key": "listener:tcp:0.0.0.0:8448",
+    "transition": "OPEN",
+    "before": null,
+    "after": {
+      "protocol": "tcp",
+      "local_address": "0.0.0.0",
+      "local_port": 8448,
+      "pid": "7520",
+      "process_name": "CacheHost.exe",
+      "executable_path": "C:\\ProgramData\\CsgLab\\Stage\\CacheHost.exe",
+      "state": "LISTENING"
+    }
+  }
+]

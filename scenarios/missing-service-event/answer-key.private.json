@@ -1,0 +1,120 @@
+{
+  "scenario_id": "case-02",
+  "answers": [
+    {
+      "variant": "A",
+      "delta_id": "d-service-mode",
+      "expected_classification": "PARTIALLY_EXPLAINED",
+      "required_evidence_ids": [
+        "case-02-A-evt-81f47795a8f3",
+        "case-02-A-evt-8e5b879e3412",
+        "case-02-A-evt-b8f344228ba3"
+      ],
+      "acceptable_evidence_ids": [
+        "case-02-A-evt-6a564f457ca9",
+        "case-02-A-evt-c7b4b7db9fe5",
+        "case-02-A-evt-0c5929225a25"
+      ],
+      "prohibited_distractor_ids": [
+        "case-02-A-evt-edc236e72c35",
+        "case-02-A-evt-74f89f78a748",
+        "case-02-A-evt-f86fa06caf77"
+      ],
+      "require_all_evidence": true,
+      "explanation": "CSG independently confirms {target} changed Manual \u2192 Automatic. Same-host PowerShell 4104 shows `sc.exe stop CsgTelemetryForwarder`, `sc.exe config {target} start= auto`, and `sc.exe start CsgTelemetryForwarder` in that order. Forwarder stop/start records bracket the attempted change, and the matching 7040 is absent. The same script disables Defender, stages documents, and attempts an outbound transfer. Classify it PARTIALLY_EXPLAINED: the sequence links malicious intent to the observed result and offers a credible explanation for the logging gap, but the script block and CSG snapshots do not prove that the config command executed or caused the change.",
+      "learning_notes": "Correlate endpoint state with surrounding event evidence and assess what each source can establish."
+    },
+    {
+      "variant": "B",
+      "delta_id": "d-service-mode",
+      "expected_classification": "PARTIALLY_EXPLAINED",
+      "required_evidence_ids": [
+        "case-02-B-evt-ad7937c3e4ba",
+        "case-02-B-evt-71b4cc213c9e",
+        "case-02-B-evt-5857595c1040"
+      ],
+      "acceptable_evidence_ids": [
+        "case-02-B-evt-1d6466cf1ec8",
+        "case-02-B-evt-9d0a766aec18",
+        "case-02-B-evt-edabee5a0bea"
+      ],
+      "prohibited_distractor_ids": [
+        "case-02-B-evt-b3ab88fd9e5e",
+        "case-02-B-evt-ed8d3f30e1e1",
+        "case-02-B-evt-25eeae5b6955"
+      ],
+      "require_all_evidence": true,
+      "explanation": "CSG independently confirms {target} changed Manual \u2192 Automatic. Same-host PowerShell 4104 shows `sc.exe stop CsgTelemetryForwarder`, `sc.exe config {target} start= auto`, and `sc.exe start CsgTelemetryForwarder` in that order. Forwarder stop/start records bracket the attempted change, and the matching 7040 is absent. The same script disables Defender, stages documents, and attempts an outbound transfer. Classify it PARTIALLY_EXPLAINED: the sequence links malicious intent to the observed result and offers a credible explanation for the logging gap, but the script block and CSG snapshots do not prove that the config command executed or caused the change.",
+      "learning_notes": "Correlate endpoint state with surrounding event evidence and assess what each source can establish."
+    },
+    {
+      "variant": "C",
+      "delta_id": "d-service-mode",
+      "expected_classification": "PARTIALLY_EXPLAINED",
+      "required_evidence_ids": [
+        "case-02-C-evt-b66021400bf1",
+        "case-02-C-evt-e6ad3fe44b0a",
+        "case-02-C-evt-0d5505dc668b"
+      ],
+      "acceptable_evidence_ids": [
+        "case-02-C-evt-433fa0297e70",
+        "case-02-C-evt-6d54ca667340",
+        "case-02-C-evt-e9a54021137e"
+      ],
+      "prohibited_distractor_ids": [
+        "case-02-C-evt-2fb7b87e06fb",
+        "case-02-C-evt-ee723ffa5bd7",
+        "case-02-C-evt-4082a06aa6b1"
+      ],
+      "require_all_evidence": true,
+      "explanation": "CSG independently confirms {target} changed Manual \u2192 Automatic. Same-host PowerShell 4104 shows `sc.exe stop CsgTelemetryForwarder`, `sc.exe config {target} start= auto`, and `sc.exe start CsgTelemetryForwarder` in that order. Forwarder stop/start records bracket the attempted change, and the matching 7040 is absent. The same script disables Defender, stages documents, and attempts an outbound transfer. Classify it PARTIALLY_EXPLAINED: the sequence links malicious intent to the observed result and offers a credible explanation for the logging gap, but the script block and CSG snapshots do not prove that the config command executed or caused the change.",
+      "learning_notes": "Correlate endpoint state with surrounding event evidence and assess what each source can establish."
+    },
+    {
+      "variant": "D",
+      "delta_id": "d-service-mode",
+      "expected_classification": "PARTIALLY_EXPLAINED",
+      "required_evidence_ids": [
+        "case-02-D-evt-a56e36435db4",
+        "case-02-D-evt-813ca7de0f30",
+        "case-02-D-evt-76e5337856f6"
+      ],
+      "acceptable_evidence_ids": [
+        "case-02-D-evt-87053203cb6d",
+        "case-02-D-evt-b25e889a1017",
+        "case-02-D-evt-3b2d684adf18"
+      ],
+      "prohibited_distractor_ids": [
+        "case-02-D-evt-5a8363558d63",
+        "case-02-D-evt-be1c45b34c86",
+        "case-02-D-evt-209f4c538ad9"
+      ],
+      "require_all_evidence": true,
+      "explanation": "CSG independently confirms {target} changed Manual \u2192 Automatic. Same-host PowerShell 4104 shows `sc.exe stop CsgTelemetryForwarder`, `sc.exe config {target} start= auto`, and `sc.exe start CsgTelemetryForwarder` in that order. Forwarder stop/start records bracket the attempted change, and the matching 7040 is absent. The same script disables Defender, stages documents, and attempts an outbound transfer. Classify it PARTIALLY_EXPLAINED: the sequence links malicious intent to the observed result and offers a credible explanation for the logging gap, but the script block and CSG snapshots do not prove that the config command executed or caused the change.",
+      "learning_notes": "Correlate endpoint state with surrounding event evidence and assess what each source can establish."
+    },
+    {
+      "variant": "E",
+      "delta_id": "d-service-mode",
+      "expected_classification": "PARTIALLY_EXPLAINED",
+      "required_evidence_ids": [
+        "case-02-E-evt-8eac63db238d",
+        "case-02-E-evt-c999fd20cc2c",
+        "case-02-E-evt-4a1a9c3e108b"
+      ],
+      "acceptable_evidence_ids": [
+        "case-02-E-evt-e72997a7b817",
+        "case-02-E-evt-3cc2eb9a95d9",
+        "case-02-E-evt-d3915bb213e6"
+      ],
+      "prohibited_distractor_ids": [
+        "case-02-E-evt-32e5e6134324",
+        "case-02-E-evt-fbad13c46241",
+        "case-02-E-evt-83cd9682af17"
+      ],
+      "require_all_evidence": true,
+      "explanation": "CSG independently confirms {target} changed Manual \u2192 Automatic. Same-host PowerShell 4104 shows `sc.exe stop CsgTelemetryForwarder`, `sc.exe config {target} start= auto`, and `sc.exe start CsgTelemetryForwarder` in that order. Forwarder stop/start records bracket the attempted change, and the matching 7040 is absent. The same script disables Defender, stages documents, and attempts an outbound transfer. Classify it PARTIALLY_EXPLAINED: the sequence links malicious intent to the observed result and offers a credible explanation for the logging gap, but the script block and CSG snapshots do not prove that the config command executed or caused the change.",
+      "learning_notes": "Correlate endpoint state with surrounding event evidence and assess what each source can establish."
+    }
+  ]
+}

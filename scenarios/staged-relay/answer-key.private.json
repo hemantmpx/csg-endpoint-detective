@@ -1,0 +1,435 @@
+{
+  "scenario_id": "case-04",
+  "answers": [
+    {
+      "variant": "A",
+      "delta_id": "d-service-auto",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-04-A-evt-7b8fd8240ce4",
+        "case-04-A-evt-dd33e3e44873",
+        "case-04-A-evt-ecf062a510fa"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-04-A-evt-c762b5e7249e",
+        "case-04-A-evt-c70569409445"
+      ],
+      "require_all_evidence": true,
+      "explanation": "From Snapshot A to B, DeviceCacheSvc changes Manual \u2192 Automatic and CacheHost.exe appears with the same executable path configured on the service. Wazuh 7040 confirms the exact start-type change; Sysmon 1 confirms the process instance and parent. The first-stage PowerShell 4104 script requests the change and starts the service. The path, host, operation, and order link the first durable delta to the next stage; a nearby or opposite-direction service record does not.",
+      "learning_notes": "Reconstruct a two-stage compromise across three snapshots and connect each durable delta to the next stage of attacker activity."
+    },
+    {
+      "variant": "A",
+      "delta_id": "d-process-add",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-04-A-evt-dd33e3e44873",
+        "case-04-A-evt-e4cf10f0bef8"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-04-A-evt-3bd11ee43044",
+        "case-04-A-evt-09978256be62"
+      ],
+      "require_all_evidence": true,
+      "explanation": "The process appears by Snapshot B. Sysmon 1 matches its PID, path, host, and services.exe parent. The later child PowerShell 4104 shares this parent PID and names the task action and listener port, carrying the service-image link into the second stage.",
+      "learning_notes": "Reconstruct a two-stage compromise across three snapshots and connect each durable delta to the next stage of attacker activity."
+    },
+    {
+      "variant": "A",
+      "delta_id": "d-task-add",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-04-A-evt-a9e3883cea2c",
+        "case-04-A-evt-e4cf10f0bef8"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-04-A-evt-7522f133e6eb",
+        "case-04-A-evt-c1510afbdbe7"
+      ],
+      "require_all_evidence": true,
+      "explanation": "The task first appears between Snapshots B and C. CSG records its full path and hidden startup action; Task Scheduler 106 confirms the same task and action. The child 4104 script requests that action and also disables Defender and stages data. Its parent process ID and executable path match the service image found in A\u2192B.",
+      "learning_notes": "Reconstruct a two-stage compromise across three snapshots and connect each durable delta to the next stage of attacker activity."
+    },
+    {
+      "variant": "A",
+      "delta_id": "d-listener-process-add",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-04-A-evt-ba89dd0db705",
+        "case-04-A-evt-e4cf10f0bef8"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-04-A-evt-3bd11ee43044",
+        "case-04-A-evt-09978256be62"
+      ],
+      "require_all_evidence": true,
+      "explanation": "A second instance of the same executable appears after the startup task is registered. Sysmon 1 identifies the exact PID and the PowerShell parent; its command line matches the task action and the process owns the listener in the following transition. The task stores the same action for the next startup.",
+      "learning_notes": "Reconstruct a two-stage compromise across three snapshots and connect each durable delta to the next stage of attacker activity."
+    },
+    {
+      "variant": "A",
+      "delta_id": "d-listener-add",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-04-A-evt-aa705981b564",
+        "case-04-A-evt-e4cf10f0bef8"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-04-A-evt-56ab4a30ebce",
+        "case-04-A-evt-09978256be62"
+      ],
+      "require_all_evidence": true,
+      "explanation": "The listener appears between Snapshots B and C. Security 5154 confirms Windows permitted the exact image and PID to listen on the same TCP port CSG records. The PowerShell child script launches that listener and creates the persistent task; Sysmon process ancestry ties it to the service image established in A\u2192B.",
+      "learning_notes": "Reconstruct a two-stage compromise across three snapshots and connect each durable delta to the next stage of attacker activity."
+    },
+    {
+      "variant": "B",
+      "delta_id": "d-service-auto",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-04-B-evt-24bac0c73998",
+        "case-04-B-evt-a928d34ba03f",
+        "case-04-B-evt-adf76dc2f2ff"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-04-B-evt-97a262180e12",
+        "case-04-B-evt-36d34702e377"
+      ],
+      "require_all_evidence": true,
+      "explanation": "From Snapshot A to B, InventoryCacheSvc changes Manual \u2192 Automatic and InventoryHost.exe appears with the same executable path configured on the service. Wazuh 7040 confirms the exact start-type change; Sysmon 1 confirms the process instance and parent. The first-stage PowerShell 4104 script requests the change and starts the service. The path, host, operation, and order link the first durable delta to the next stage; a nearby or opposite-direction service record does not.",
+      "learning_notes": "Reconstruct a two-stage compromise across three snapshots and connect each durable delta to the next stage of attacker activity."
+    },
+    {
+      "variant": "B",
+      "delta_id": "d-process-add",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-04-B-evt-a928d34ba03f",
+        "case-04-B-evt-cf9f85c0d4e8"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-04-B-evt-6fafeec75336",
+        "case-04-B-evt-c6e39b1a23aa"
+      ],
+      "require_all_evidence": true,
+      "explanation": "The process appears by Snapshot B. Sysmon 1 matches its PID, path, host, and services.exe parent. The later child PowerShell 4104 shares this parent PID and names the task action and listener port, carrying the service-image link into the second stage.",
+      "learning_notes": "Reconstruct a two-stage compromise across three snapshots and connect each durable delta to the next stage of attacker activity."
+    },
+    {
+      "variant": "B",
+      "delta_id": "d-task-add",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-04-B-evt-0b1329ffd0fb",
+        "case-04-B-evt-cf9f85c0d4e8"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-04-B-evt-e3834477c975",
+        "case-04-B-evt-5b3f6c908440"
+      ],
+      "require_all_evidence": true,
+      "explanation": "The task first appears between Snapshots B and C. CSG records its full path and hidden startup action; Task Scheduler 106 confirms the same task and action. The child 4104 script requests that action and also disables Defender and stages data. Its parent process ID and executable path match the service image found in A\u2192B.",
+      "learning_notes": "Reconstruct a two-stage compromise across three snapshots and connect each durable delta to the next stage of attacker activity."
+    },
+    {
+      "variant": "B",
+      "delta_id": "d-listener-process-add",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-04-B-evt-73e9fb02f854",
+        "case-04-B-evt-cf9f85c0d4e8"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-04-B-evt-6fafeec75336",
+        "case-04-B-evt-c6e39b1a23aa"
+      ],
+      "require_all_evidence": true,
+      "explanation": "A second instance of the same executable appears after the startup task is registered. Sysmon 1 identifies the exact PID and the PowerShell parent; its command line matches the task action and the process owns the listener in the following transition. The task stores the same action for the next startup.",
+      "learning_notes": "Reconstruct a two-stage compromise across three snapshots and connect each durable delta to the next stage of attacker activity."
+    },
+    {
+      "variant": "B",
+      "delta_id": "d-listener-add",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-04-B-evt-915a72c72aff",
+        "case-04-B-evt-cf9f85c0d4e8"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-04-B-evt-15da81453e66",
+        "case-04-B-evt-c6e39b1a23aa"
+      ],
+      "require_all_evidence": true,
+      "explanation": "The listener appears between Snapshots B and C. Security 5154 confirms Windows permitted the exact image and PID to listen on the same TCP port CSG records. The PowerShell child script launches that listener and creates the persistent task; Sysmon process ancestry ties it to the service image established in A\u2192B.",
+      "learning_notes": "Reconstruct a two-stage compromise across three snapshots and connect each durable delta to the next stage of attacker activity."
+    },
+    {
+      "variant": "C",
+      "delta_id": "d-service-auto",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-04-C-evt-cf815c4880ac",
+        "case-04-C-evt-e1bdcddba766",
+        "case-04-C-evt-39026210c6ac"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-04-C-evt-d6841a66839a",
+        "case-04-C-evt-1c3a0d9e9c1a"
+      ],
+      "require_all_evidence": true,
+      "explanation": "From Snapshot A to B, MetricsCacheSvc changes Manual \u2192 Automatic and MetricsHost.exe appears with the same executable path configured on the service. Wazuh 7040 confirms the exact start-type change; Sysmon 1 confirms the process instance and parent. The first-stage PowerShell 4104 script requests the change and starts the service. The path, host, operation, and order link the first durable delta to the next stage; a nearby or opposite-direction service record does not.",
+      "learning_notes": "Reconstruct a two-stage compromise across three snapshots and connect each durable delta to the next stage of attacker activity."
+    },
+    {
+      "variant": "C",
+      "delta_id": "d-process-add",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-04-C-evt-e1bdcddba766",
+        "case-04-C-evt-9afa286ebd7c"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-04-C-evt-ac2578d67316",
+        "case-04-C-evt-8c5a6e14348f"
+      ],
+      "require_all_evidence": true,
+      "explanation": "The process appears by Snapshot B. Sysmon 1 matches its PID, path, host, and services.exe parent. The later child PowerShell 4104 shares this parent PID and names the task action and listener port, carrying the service-image link into the second stage.",
+      "learning_notes": "Reconstruct a two-stage compromise across three snapshots and connect each durable delta to the next stage of attacker activity."
+    },
+    {
+      "variant": "C",
+      "delta_id": "d-task-add",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-04-C-evt-31e6cc715076",
+        "case-04-C-evt-9afa286ebd7c"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-04-C-evt-9003cc435a37",
+        "case-04-C-evt-cb5a13f58109"
+      ],
+      "require_all_evidence": true,
+      "explanation": "The task first appears between Snapshots B and C. CSG records its full path and hidden startup action; Task Scheduler 106 confirms the same task and action. The child 4104 script requests that action and also disables Defender and stages data. Its parent process ID and executable path match the service image found in A\u2192B.",
+      "learning_notes": "Reconstruct a two-stage compromise across three snapshots and connect each durable delta to the next stage of attacker activity."
+    },
+    {
+      "variant": "C",
+      "delta_id": "d-listener-process-add",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-04-C-evt-5de5fab96640",
+        "case-04-C-evt-9afa286ebd7c"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-04-C-evt-ac2578d67316",
+        "case-04-C-evt-8c5a6e14348f"
+      ],
+      "require_all_evidence": true,
+      "explanation": "A second instance of the same executable appears after the startup task is registered. Sysmon 1 identifies the exact PID and the PowerShell parent; its command line matches the task action and the process owns the listener in the following transition. The task stores the same action for the next startup.",
+      "learning_notes": "Reconstruct a two-stage compromise across three snapshots and connect each durable delta to the next stage of attacker activity."
+    },
+    {
+      "variant": "C",
+      "delta_id": "d-listener-add",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-04-C-evt-7d58be4580ce",
+        "case-04-C-evt-9afa286ebd7c"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-04-C-evt-85aa6f57e89b",
+        "case-04-C-evt-8c5a6e14348f"
+      ],
+      "require_all_evidence": true,
+      "explanation": "The listener appears between Snapshots B and C. Security 5154 confirms Windows permitted the exact image and PID to listen on the same TCP port CSG records. The PowerShell child script launches that listener and creates the persistent task; Sysmon process ancestry ties it to the service image established in A\u2192B.",
+      "learning_notes": "Reconstruct a two-stage compromise across three snapshots and connect each durable delta to the next stage of attacker activity."
+    },
+    {
+      "variant": "D",
+      "delta_id": "d-service-auto",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-04-D-evt-38cae0a6fd34",
+        "case-04-D-evt-0d17ce706ab3",
+        "case-04-D-evt-e090093d41d5"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-04-D-evt-b48037bf6177",
+        "case-04-D-evt-6fda70102b9b"
+      ],
+      "require_all_evidence": true,
+      "explanation": "From Snapshot A to B, PolicyCacheSvc changes Manual \u2192 Automatic and PolicyHost.exe appears with the same executable path configured on the service. Wazuh 7040 confirms the exact start-type change; Sysmon 1 confirms the process instance and parent. The first-stage PowerShell 4104 script requests the change and starts the service. The path, host, operation, and order link the first durable delta to the next stage; a nearby or opposite-direction service record does not.",
+      "learning_notes": "Reconstruct a two-stage compromise across three snapshots and connect each durable delta to the next stage of attacker activity."
+    },
+    {
+      "variant": "D",
+      "delta_id": "d-process-add",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-04-D-evt-0d17ce706ab3",
+        "case-04-D-evt-7a5934feb53f"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-04-D-evt-340031029e3a",
+        "case-04-D-evt-1dc98d5a84ae"
+      ],
+      "require_all_evidence": true,
+      "explanation": "The process appears by Snapshot B. Sysmon 1 matches its PID, path, host, and services.exe parent. The later child PowerShell 4104 shares this parent PID and names the task action and listener port, carrying the service-image link into the second stage.",
+      "learning_notes": "Reconstruct a two-stage compromise across three snapshots and connect each durable delta to the next stage of attacker activity."
+    },
+    {
+      "variant": "D",
+      "delta_id": "d-task-add",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-04-D-evt-6925f0f3ee09",
+        "case-04-D-evt-7a5934feb53f"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-04-D-evt-6da51d9351c5",
+        "case-04-D-evt-af682490902d"
+      ],
+      "require_all_evidence": true,
+      "explanation": "The task first appears between Snapshots B and C. CSG records its full path and hidden startup action; Task Scheduler 106 confirms the same task and action. The child 4104 script requests that action and also disables Defender and stages data. Its parent process ID and executable path match the service image found in A\u2192B.",
+      "learning_notes": "Reconstruct a two-stage compromise across three snapshots and connect each durable delta to the next stage of attacker activity."
+    },
+    {
+      "variant": "D",
+      "delta_id": "d-listener-process-add",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-04-D-evt-5581d78b2a22",
+        "case-04-D-evt-7a5934feb53f"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-04-D-evt-340031029e3a",
+        "case-04-D-evt-1dc98d5a84ae"
+      ],
+      "require_all_evidence": true,
+      "explanation": "A second instance of the same executable appears after the startup task is registered. Sysmon 1 identifies the exact PID and the PowerShell parent; its command line matches the task action and the process owns the listener in the following transition. The task stores the same action for the next startup.",
+      "learning_notes": "Reconstruct a two-stage compromise across three snapshots and connect each durable delta to the next stage of attacker activity."
+    },
+    {
+      "variant": "D",
+      "delta_id": "d-listener-add",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-04-D-evt-a9b2f03c440c",
+        "case-04-D-evt-7a5934feb53f"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-04-D-evt-263ce6e45a4a",
+        "case-04-D-evt-1dc98d5a84ae"
+      ],
+      "require_all_evidence": true,
+      "explanation": "The listener appears between Snapshots B and C. Security 5154 confirms Windows permitted the exact image and PID to listen on the same TCP port CSG records. The PowerShell child script launches that listener and creates the persistent task; Sysmon process ancestry ties it to the service image established in A\u2192B.",
+      "learning_notes": "Reconstruct a two-stage compromise across three snapshots and connect each durable delta to the next stage of attacker activity."
+    },
+    {
+      "variant": "E",
+      "delta_id": "d-service-auto",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-04-E-evt-362e95bbaafc",
+        "case-04-E-evt-0d40f81c5a9f",
+        "case-04-E-evt-c187c3b05674"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-04-E-evt-d4a2aa4f0e48",
+        "case-04-E-evt-d0a269f445e5"
+      ],
+      "require_all_evidence": true,
+      "explanation": "From Snapshot A to B, EndpointCacheSvc changes Manual \u2192 Automatic and EndpointHost.exe appears with the same executable path configured on the service. Wazuh 7040 confirms the exact start-type change; Sysmon 1 confirms the process instance and parent. The first-stage PowerShell 4104 script requests the change and starts the service. The path, host, operation, and order link the first durable delta to the next stage; a nearby or opposite-direction service record does not.",
+      "learning_notes": "Reconstruct a two-stage compromise across three snapshots and connect each durable delta to the next stage of attacker activity."
+    },
+    {
+      "variant": "E",
+      "delta_id": "d-process-add",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-04-E-evt-0d40f81c5a9f",
+        "case-04-E-evt-dc14f2d7be0f"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-04-E-evt-8bf87e9b812e",
+        "case-04-E-evt-d05abd4ecac3"
+      ],
+      "require_all_evidence": true,
+      "explanation": "The process appears by Snapshot B. Sysmon 1 matches its PID, path, host, and services.exe parent. The later child PowerShell 4104 shares this parent PID and names the task action and listener port, carrying the service-image link into the second stage.",
+      "learning_notes": "Reconstruct a two-stage compromise across three snapshots and connect each durable delta to the next stage of attacker activity."
+    },
+    {
+      "variant": "E",
+      "delta_id": "d-task-add",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-04-E-evt-a3e0bece6eaa",
+        "case-04-E-evt-dc14f2d7be0f"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-04-E-evt-28afe8b12c73",
+        "case-04-E-evt-f3aba0030fc8"
+      ],
+      "require_all_evidence": true,
+      "explanation": "The task first appears between Snapshots B and C. CSG records its full path and hidden startup action; Task Scheduler 106 confirms the same task and action. The child 4104 script requests that action and also disables Defender and stages data. Its parent process ID and executable path match the service image found in A\u2192B.",
+      "learning_notes": "Reconstruct a two-stage compromise across three snapshots and connect each durable delta to the next stage of attacker activity."
+    },
+    {
+      "variant": "E",
+      "delta_id": "d-listener-process-add",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-04-E-evt-8c618320071c",
+        "case-04-E-evt-dc14f2d7be0f"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-04-E-evt-8bf87e9b812e",
+        "case-04-E-evt-d05abd4ecac3"
+      ],
+      "require_all_evidence": true,
+      "explanation": "A second instance of the same executable appears after the startup task is registered. Sysmon 1 identifies the exact PID and the PowerShell parent; its command line matches the task action and the process owns the listener in the following transition. The task stores the same action for the next startup.",
+      "learning_notes": "Reconstruct a two-stage compromise across three snapshots and connect each durable delta to the next stage of attacker activity."
+    },
+    {
+      "variant": "E",
+      "delta_id": "d-listener-add",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-04-E-evt-8690df79534d",
+        "case-04-E-evt-dc14f2d7be0f"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-04-E-evt-5f22457c646a",
+        "case-04-E-evt-d05abd4ecac3"
+      ],
+      "require_all_evidence": true,
+      "explanation": "The listener appears between Snapshots B and C. Security 5154 confirms Windows permitted the exact image and PID to listen on the same TCP port CSG records. The PowerShell child script launches that listener and creates the persistent task; Sysmon process ancestry ties it to the service image established in A\u2192B.",
+      "learning_notes": "Reconstruct a two-stage compromise across three snapshots and connect each durable delta to the next stage of attacker activity."
+    }
+  ]
+}

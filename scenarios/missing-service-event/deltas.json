@@ -1,0 +1,32 @@
+[
+  {
+    "id": "d-service-mode",
+    "category": "service",
+    "operation": "MODIFY",
+    "before": {
+      "service_name": "UpdateHelper",
+      "display_name": "UpdateHelper Service",
+      "status": "running",
+      "start_mode": "manual",
+      "binary_path": "C:\\Program Files\\UpdateHelper\\agent.exe",
+      "account": "LocalSystem"
+    },
+    "after": {
+      "service_name": "UpdateHelper",
+      "display_name": "UpdateHelper Service",
+      "status": "running",
+      "start_mode": "automatic",
+      "binary_path": "C:\\Program Files\\UpdateHelper\\agent.exe",
+      "account": "LocalSystem"
+    },
+    "object_key": "service:UpdateHelper",
+    "before_snapshot_index": 0,
+    "after_snapshot_index": 1,
+    "before_snapshot_id": "case-02-A-snapshot-1",
+    "after_snapshot_id": "case-02-A-snapshot-2",
+    "observation_window": {
+      "start": "2026-09-26T09:30:00+00:00",
+      "end": "2026-09-26T10:00:00+00:00"
+    }
+  }
+]

@@ -1,0 +1,440 @@
+{
+  "scenario_id": "case-final",
+  "answers": [
+    {
+      "variant": "A",
+      "delta_id": "c-service-cycle",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-final-A-evt-d993afa9e13d",
+        "case-final-A-evt-2bd91da8f9cd"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-final-A-evt-e3b3457f1864",
+        "case-final-A-evt-d67551436249",
+        "case-final-A-evt-3905300d0126",
+        "case-final-A-evt-32789ab8ada7",
+        "case-final-A-evt-ad57620d8294",
+        "case-final-A-evt-accb98295c21",
+        "case-final-A-evt-bb73ed80fec3",
+        "case-final-A-evt-88ba8665f27a"
+      ],
+      "require_all_evidence": true,
+      "explanation": "CSG recorded Manual \u2192 Automatic \u2192 Manual for the same service, and Wazuh 7040 confirms both changes. Its configured image path matches the short-lived process, which spawns the child PowerShell process responsible for the malicious commands in event 4104.",
+      "learning_notes": "Reconstruct one linked incident from durable state, transient CSG transitions, and mixed independent Wazuh evidence."
+    },
+    {
+      "variant": "A",
+      "delta_id": "c-process-lifecycle",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-final-A-evt-683eab76d01f",
+        "case-final-A-evt-c2855ea72fc2"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-final-A-evt-cebbc0b22cea"
+      ],
+      "require_all_evidence": true,
+      "explanation": "CSG records the process start and exit; Sysmon 1/5 match the same PID, parent, image path, and host. Its child PowerShell process contains malicious Defender-disable, staging, and persistence commands in event 4104, tying the transient CSG process to the threat.",
+      "learning_notes": "Reconstruct one linked incident from durable state, transient CSG transitions, and mixed independent Wazuh evidence."
+    },
+    {
+      "variant": "A",
+      "delta_id": "c-listener-lifecycle",
+      "expected_classification": "PARTIALLY_EXPLAINED",
+      "required_evidence_ids": [
+        "case-final-A-evt-e5306e3c2f56"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-final-A-evt-175471153e3b"
+      ],
+      "require_all_evidence": true,
+      "explanation": "CSG recorded the listener opening and closing on the process-owned port. Wazuh event 5154 supports the listener opening and ties it to the same process and executable, but the archived event set contains no matching close record.",
+      "learning_notes": "Reconstruct one linked incident from durable state, transient CSG transitions, and mixed independent Wazuh evidence."
+    },
+    {
+      "variant": "A",
+      "delta_id": "d-task-add",
+      "expected_classification": "PARTIALLY_EXPLAINED",
+      "required_evidence_ids": [],
+      "acceptable_evidence_ids": [
+        "case-final-A-evt-03d25df555cd"
+      ],
+      "prohibited_distractor_ids": [
+        "case-final-A-evt-691d8cfc7933",
+        "case-final-A-evt-d04013a02766"
+      ],
+      "require_all_evidence": false,
+      "explanation": "The task is absent in Snapshot A and persists in Snapshot B; CSG records its creation. PowerShell 4104 names this exact task and executable action in a script that also disables Defender and stages data, tying the CSG finding to the malicious process. No Task Scheduler 106 confirms registration, so this is a strong cross-source link with a remaining telemetry gap, not direct event confirmation.",
+      "learning_notes": "Reconstruct one linked incident from durable state, transient CSG transitions, and mixed independent Wazuh evidence."
+    },
+    {
+      "variant": "A",
+      "delta_id": "d-registry-add",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-final-A-evt-4c4c4a4dbe15",
+        "case-final-A-evt-03d25df555cd"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-final-A-evt-879625aa0fb4",
+        "case-final-A-evt-540a8bfff10b"
+      ],
+      "require_all_evidence": true,
+      "explanation": "The Run value is absent from Snapshot A and persists in Snapshot B. CSG records its creation; Sysmon 13 confirms the exact value data and executable. PowerShell 4104 names the same Run value and data in the malicious child process, linking the persistence change to the threat activity.",
+      "learning_notes": "Reconstruct one linked incident from durable state, transient CSG transitions, and mixed independent Wazuh evidence."
+    },
+    {
+      "variant": "B",
+      "delta_id": "c-service-cycle",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-final-B-evt-5207cf0e4c96",
+        "case-final-B-evt-dfe977e7d0e8"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-final-B-evt-85f754b3d073",
+        "case-final-B-evt-1d20bc0c4279",
+        "case-final-B-evt-d0277129f637",
+        "case-final-B-evt-e29652614316",
+        "case-final-B-evt-b2da251e4389",
+        "case-final-B-evt-8943862e3eb6",
+        "case-final-B-evt-11f46f24941b",
+        "case-final-B-evt-b725fc0b61c8"
+      ],
+      "require_all_evidence": true,
+      "explanation": "CSG recorded Manual \u2192 Automatic \u2192 Manual for the same service, and Wazuh 7040 confirms both changes. Its configured image path matches the short-lived process, which spawns the child PowerShell process responsible for the malicious commands in event 4104.",
+      "learning_notes": "Reconstruct one linked incident from durable state, transient CSG transitions, and mixed independent Wazuh evidence."
+    },
+    {
+      "variant": "B",
+      "delta_id": "c-process-lifecycle",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-final-B-evt-ea9561bbdcf2",
+        "case-final-B-evt-3d8bede2a099"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-final-B-evt-c91983f949ec"
+      ],
+      "require_all_evidence": true,
+      "explanation": "CSG records the process start and exit; Sysmon 1/5 match the same PID, parent, image path, and host. Its child PowerShell process contains malicious Defender-disable, staging, and persistence commands in event 4104, tying the transient CSG process to the threat.",
+      "learning_notes": "Reconstruct one linked incident from durable state, transient CSG transitions, and mixed independent Wazuh evidence."
+    },
+    {
+      "variant": "B",
+      "delta_id": "c-listener-lifecycle",
+      "expected_classification": "PARTIALLY_EXPLAINED",
+      "required_evidence_ids": [
+        "case-final-B-evt-1155f0f39ce8"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-final-B-evt-83147d86d60a"
+      ],
+      "require_all_evidence": true,
+      "explanation": "CSG recorded the listener opening and closing on the process-owned port. Wazuh event 5154 supports the listener opening and ties it to the same process and executable, but the archived event set contains no matching close record.",
+      "learning_notes": "Reconstruct one linked incident from durable state, transient CSG transitions, and mixed independent Wazuh evidence."
+    },
+    {
+      "variant": "B",
+      "delta_id": "d-task-add",
+      "expected_classification": "PARTIALLY_EXPLAINED",
+      "required_evidence_ids": [],
+      "acceptable_evidence_ids": [
+        "case-final-B-evt-bc29efbb8f75"
+      ],
+      "prohibited_distractor_ids": [
+        "case-final-B-evt-a242e565c76d",
+        "case-final-B-evt-f94424675155"
+      ],
+      "require_all_evidence": false,
+      "explanation": "The task is absent in Snapshot A and persists in Snapshot B; CSG records its creation. PowerShell 4104 names this exact task and executable action in a script that also disables Defender and stages data, tying the CSG finding to the malicious process. No Task Scheduler 106 confirms registration, so this is a strong cross-source link with a remaining telemetry gap, not direct event confirmation.",
+      "learning_notes": "Reconstruct one linked incident from durable state, transient CSG transitions, and mixed independent Wazuh evidence."
+    },
+    {
+      "variant": "B",
+      "delta_id": "d-registry-add",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-final-B-evt-8682c0b43711",
+        "case-final-B-evt-bc29efbb8f75"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-final-B-evt-3f21628191f8",
+        "case-final-B-evt-b82d8fb69234"
+      ],
+      "require_all_evidence": true,
+      "explanation": "The Run value is absent from Snapshot A and persists in Snapshot B. CSG records its creation; Sysmon 13 confirms the exact value data and executable. PowerShell 4104 names the same Run value and data in the malicious child process, linking the persistence change to the threat activity.",
+      "learning_notes": "Reconstruct one linked incident from durable state, transient CSG transitions, and mixed independent Wazuh evidence."
+    },
+    {
+      "variant": "C",
+      "delta_id": "c-service-cycle",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-final-C-evt-356d81cbbcc4",
+        "case-final-C-evt-af2abd059d37"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-final-C-evt-299641d76675",
+        "case-final-C-evt-d40362fecbd5",
+        "case-final-C-evt-fc7d8b4dcf00",
+        "case-final-C-evt-c31a5278d748",
+        "case-final-C-evt-1db273d94a33",
+        "case-final-C-evt-111266738ef9",
+        "case-final-C-evt-f5b85b7e2ac1",
+        "case-final-C-evt-81aef102a384"
+      ],
+      "require_all_evidence": true,
+      "explanation": "CSG recorded Manual \u2192 Automatic \u2192 Manual for the same service, and Wazuh 7040 confirms both changes. Its configured image path matches the short-lived process, which spawns the child PowerShell process responsible for the malicious commands in event 4104.",
+      "learning_notes": "Reconstruct one linked incident from durable state, transient CSG transitions, and mixed independent Wazuh evidence."
+    },
+    {
+      "variant": "C",
+      "delta_id": "c-process-lifecycle",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-final-C-evt-8aa43f8ceb4d",
+        "case-final-C-evt-95fa3b34b882"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-final-C-evt-acf0847ae771"
+      ],
+      "require_all_evidence": true,
+      "explanation": "CSG records the process start and exit; Sysmon 1/5 match the same PID, parent, image path, and host. Its child PowerShell process contains malicious Defender-disable, staging, and persistence commands in event 4104, tying the transient CSG process to the threat.",
+      "learning_notes": "Reconstruct one linked incident from durable state, transient CSG transitions, and mixed independent Wazuh evidence."
+    },
+    {
+      "variant": "C",
+      "delta_id": "c-listener-lifecycle",
+      "expected_classification": "PARTIALLY_EXPLAINED",
+      "required_evidence_ids": [
+        "case-final-C-evt-4cb9ce8e4f86"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-final-C-evt-98c062abfe59"
+      ],
+      "require_all_evidence": true,
+      "explanation": "CSG recorded the listener opening and closing on the process-owned port. Wazuh event 5154 supports the listener opening and ties it to the same process and executable, but the archived event set contains no matching close record.",
+      "learning_notes": "Reconstruct one linked incident from durable state, transient CSG transitions, and mixed independent Wazuh evidence."
+    },
+    {
+      "variant": "C",
+      "delta_id": "d-task-add",
+      "expected_classification": "PARTIALLY_EXPLAINED",
+      "required_evidence_ids": [],
+      "acceptable_evidence_ids": [
+        "case-final-C-evt-2d78121f25aa"
+      ],
+      "prohibited_distractor_ids": [
+        "case-final-C-evt-95a6ed6a6713",
+        "case-final-C-evt-201b2dc645f6"
+      ],
+      "require_all_evidence": false,
+      "explanation": "The task is absent in Snapshot A and persists in Snapshot B; CSG records its creation. PowerShell 4104 names this exact task and executable action in a script that also disables Defender and stages data, tying the CSG finding to the malicious process. No Task Scheduler 106 confirms registration, so this is a strong cross-source link with a remaining telemetry gap, not direct event confirmation.",
+      "learning_notes": "Reconstruct one linked incident from durable state, transient CSG transitions, and mixed independent Wazuh evidence."
+    },
+    {
+      "variant": "C",
+      "delta_id": "d-registry-add",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-final-C-evt-1e6be23b6e8a",
+        "case-final-C-evt-2d78121f25aa"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-final-C-evt-6298042374fa",
+        "case-final-C-evt-b46cad987cd3"
+      ],
+      "require_all_evidence": true,
+      "explanation": "The Run value is absent from Snapshot A and persists in Snapshot B. CSG records its creation; Sysmon 13 confirms the exact value data and executable. PowerShell 4104 names the same Run value and data in the malicious child process, linking the persistence change to the threat activity.",
+      "learning_notes": "Reconstruct one linked incident from durable state, transient CSG transitions, and mixed independent Wazuh evidence."
+    },
+    {
+      "variant": "D",
+      "delta_id": "c-service-cycle",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-final-D-evt-a5397dd8fedf",
+        "case-final-D-evt-37c3fd77d617"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-final-D-evt-83402758e3c2",
+        "case-final-D-evt-f3a7917928e2",
+        "case-final-D-evt-47673eff2839",
+        "case-final-D-evt-db338a8e0dd7",
+        "case-final-D-evt-98186e6c3607",
+        "case-final-D-evt-cc35448fe30d",
+        "case-final-D-evt-2493aab6a674",
+        "case-final-D-evt-e09c93de25f5"
+      ],
+      "require_all_evidence": true,
+      "explanation": "CSG recorded Manual \u2192 Automatic \u2192 Manual for the same service, and Wazuh 7040 confirms both changes. Its configured image path matches the short-lived process, which spawns the child PowerShell process responsible for the malicious commands in event 4104.",
+      "learning_notes": "Reconstruct one linked incident from durable state, transient CSG transitions, and mixed independent Wazuh evidence."
+    },
+    {
+      "variant": "D",
+      "delta_id": "c-process-lifecycle",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-final-D-evt-f62d90812cec",
+        "case-final-D-evt-70ce14216164"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-final-D-evt-b3fe1dfe0db6"
+      ],
+      "require_all_evidence": true,
+      "explanation": "CSG records the process start and exit; Sysmon 1/5 match the same PID, parent, image path, and host. Its child PowerShell process contains malicious Defender-disable, staging, and persistence commands in event 4104, tying the transient CSG process to the threat.",
+      "learning_notes": "Reconstruct one linked incident from durable state, transient CSG transitions, and mixed independent Wazuh evidence."
+    },
+    {
+      "variant": "D",
+      "delta_id": "c-listener-lifecycle",
+      "expected_classification": "PARTIALLY_EXPLAINED",
+      "required_evidence_ids": [
+        "case-final-D-evt-42a6720bc9f9"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-final-D-evt-9150b9b23bcc"
+      ],
+      "require_all_evidence": true,
+      "explanation": "CSG recorded the listener opening and closing on the process-owned port. Wazuh event 5154 supports the listener opening and ties it to the same process and executable, but the archived event set contains no matching close record.",
+      "learning_notes": "Reconstruct one linked incident from durable state, transient CSG transitions, and mixed independent Wazuh evidence."
+    },
+    {
+      "variant": "D",
+      "delta_id": "d-task-add",
+      "expected_classification": "PARTIALLY_EXPLAINED",
+      "required_evidence_ids": [],
+      "acceptable_evidence_ids": [
+        "case-final-D-evt-04f9f1a7fa50"
+      ],
+      "prohibited_distractor_ids": [
+        "case-final-D-evt-c88504c60584",
+        "case-final-D-evt-a8aa66a59962"
+      ],
+      "require_all_evidence": false,
+      "explanation": "The task is absent in Snapshot A and persists in Snapshot B; CSG records its creation. PowerShell 4104 names this exact task and executable action in a script that also disables Defender and stages data, tying the CSG finding to the malicious process. No Task Scheduler 106 confirms registration, so this is a strong cross-source link with a remaining telemetry gap, not direct event confirmation.",
+      "learning_notes": "Reconstruct one linked incident from durable state, transient CSG transitions, and mixed independent Wazuh evidence."
+    },
+    {
+      "variant": "D",
+      "delta_id": "d-registry-add",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-final-D-evt-5669431f5a6c",
+        "case-final-D-evt-04f9f1a7fa50"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-final-D-evt-f4150e0f67cc",
+        "case-final-D-evt-2674a91814e5"
+      ],
+      "require_all_evidence": true,
+      "explanation": "The Run value is absent from Snapshot A and persists in Snapshot B. CSG records its creation; Sysmon 13 confirms the exact value data and executable. PowerShell 4104 names the same Run value and data in the malicious child process, linking the persistence change to the threat activity.",
+      "learning_notes": "Reconstruct one linked incident from durable state, transient CSG transitions, and mixed independent Wazuh evidence."
+    },
+    {
+      "variant": "E",
+      "delta_id": "c-service-cycle",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-final-E-evt-d0ea94f842d6",
+        "case-final-E-evt-6e0a6d129758"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-final-E-evt-605b9ee9a0bf",
+        "case-final-E-evt-226c5846d74a",
+        "case-final-E-evt-c3461a5afb32",
+        "case-final-E-evt-ffb208e34772",
+        "case-final-E-evt-18be4dfb4c5e",
+        "case-final-E-evt-6661846c7edb",
+        "case-final-E-evt-bae46859107f",
+        "case-final-E-evt-e6180f79d2f5"
+      ],
+      "require_all_evidence": true,
+      "explanation": "CSG recorded Manual \u2192 Automatic \u2192 Manual for the same service, and Wazuh 7040 confirms both changes. Its configured image path matches the short-lived process, which spawns the child PowerShell process responsible for the malicious commands in event 4104.",
+      "learning_notes": "Reconstruct one linked incident from durable state, transient CSG transitions, and mixed independent Wazuh evidence."
+    },
+    {
+      "variant": "E",
+      "delta_id": "c-process-lifecycle",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-final-E-evt-3d2b39095225",
+        "case-final-E-evt-d306fd2baa6c"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-final-E-evt-06e448d00fbb"
+      ],
+      "require_all_evidence": true,
+      "explanation": "CSG records the process start and exit; Sysmon 1/5 match the same PID, parent, image path, and host. Its child PowerShell process contains malicious Defender-disable, staging, and persistence commands in event 4104, tying the transient CSG process to the threat.",
+      "learning_notes": "Reconstruct one linked incident from durable state, transient CSG transitions, and mixed independent Wazuh evidence."
+    },
+    {
+      "variant": "E",
+      "delta_id": "c-listener-lifecycle",
+      "expected_classification": "PARTIALLY_EXPLAINED",
+      "required_evidence_ids": [
+        "case-final-E-evt-5d312d4d524b"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-final-E-evt-5b4afe51a452"
+      ],
+      "require_all_evidence": true,
+      "explanation": "CSG recorded the listener opening and closing on the process-owned port. Wazuh event 5154 supports the listener opening and ties it to the same process and executable, but the archived event set contains no matching close record.",
+      "learning_notes": "Reconstruct one linked incident from durable state, transient CSG transitions, and mixed independent Wazuh evidence."
+    },
+    {
+      "variant": "E",
+      "delta_id": "d-task-add",
+      "expected_classification": "PARTIALLY_EXPLAINED",
+      "required_evidence_ids": [],
+      "acceptable_evidence_ids": [
+        "case-final-E-evt-d91242d7ebf1"
+      ],
+      "prohibited_distractor_ids": [
+        "case-final-E-evt-bbc9fe2b512b",
+        "case-final-E-evt-5f0e45084fad"
+      ],
+      "require_all_evidence": false,
+      "explanation": "The task is absent in Snapshot A and persists in Snapshot B; CSG records its creation. PowerShell 4104 names this exact task and executable action in a script that also disables Defender and stages data, tying the CSG finding to the malicious process. No Task Scheduler 106 confirms registration, so this is a strong cross-source link with a remaining telemetry gap, not direct event confirmation.",
+      "learning_notes": "Reconstruct one linked incident from durable state, transient CSG transitions, and mixed independent Wazuh evidence."
+    },
+    {
+      "variant": "E",
+      "delta_id": "d-registry-add",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-final-E-evt-d4dfb162ec16",
+        "case-final-E-evt-d91242d7ebf1"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-final-E-evt-8f094eee4842",
+        "case-final-E-evt-4bfed6151dbb"
+      ],
+      "require_all_evidence": true,
+      "explanation": "The Run value is absent from Snapshot A and persists in Snapshot B. CSG records its creation; Sysmon 13 confirms the exact value data and executable. PowerShell 4104 names the same Run value and data in the malicious child process, linking the persistence change to the threat activity.",
+      "learning_notes": "Reconstruct one linked incident from durable state, transient CSG transitions, and mixed independent Wazuh evidence."
+    }
+  ]
+}

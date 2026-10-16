@@ -1,0 +1,15 @@
+{
+  "id": "case-03",
+  "slug": "complete-state-model",
+  "title": "Between the Snapshots",
+  "difficulty": "Medium",
+  "timeline_start": "2026-09-26T09:00:00+00:00",
+  "timeline_end": "2026-09-26T12:00:00+00:00",
+  "snapshot_interval_minutes": 30,
+  "noise_seed": 42003,
+  "minimum_events": 15000,
+  "seed_version": 1,
+  "host": "WIN-LAB-01",
+  "variant_key": "A",
+  "provenance": "deterministic fictional classroom telemetry with a separately modeled CSG transition stream"
+}

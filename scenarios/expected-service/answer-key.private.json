@@ -1,0 +1,140 @@
+{
+  "scenario_id": "case-01",
+  "answers": [
+    {
+      "variant": "A",
+      "delta_id": "d-service-add",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-01-A-evt-4bb23ef00dc7",
+        "case-01-A-evt-3c7d4615d53c"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-01-A-evt-094033d040fc",
+        "case-01-A-evt-ceec8a752a09",
+        "case-01-A-evt-7db9818bb5e3",
+        "case-01-A-evt-6a000db8152a",
+        "case-01-A-evt-525ab65fa4b5",
+        "case-01-A-evt-37350014c6f9",
+        "case-01-A-evt-991ea80542d0",
+        "case-01-A-evt-7d4f3568dfda",
+        "case-01-A-evt-171c18f6625c",
+        "case-01-A-evt-27cdd1906385",
+        "case-01-A-evt-4f214b2a3a4c",
+        "case-01-A-evt-4720382d89fd"
+      ],
+      "require_all_evidence": true,
+      "explanation": "SCM 7045 directly supports the service addition on this host. Sysmon records the same service binary starting, then spawning PowerShell; event 4104 names this service in a persistence command and exposes Defender disablement and data staging. Together, the install and process chain link the CSG addition to malicious activity. The outbound request is an attempt, not proof of receipt.",
+      "learning_notes": "Match a service addition, then connect its executable to malicious activity."
+    },
+    {
+      "variant": "B",
+      "delta_id": "d-service-add",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-01-B-evt-24ee98dc652a",
+        "case-01-B-evt-150f2e0789b8"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-01-B-evt-be0cd2c315e3",
+        "case-01-B-evt-2ce6b36872e7",
+        "case-01-B-evt-4441d7fc273a",
+        "case-01-B-evt-18395617c81b",
+        "case-01-B-evt-ae9346d76f10",
+        "case-01-B-evt-73cd25d91d4d",
+        "case-01-B-evt-78e7579fc932",
+        "case-01-B-evt-7c2763c6d39b",
+        "case-01-B-evt-a5fba0da800e",
+        "case-01-B-evt-9ad28880d3b1",
+        "case-01-B-evt-1e664c60d82e",
+        "case-01-B-evt-dea6f57c6661"
+      ],
+      "require_all_evidence": true,
+      "explanation": "SCM 7045 directly supports the service addition on this host. Sysmon records the same service binary starting, then spawning PowerShell; event 4104 names this service in a persistence command and exposes Defender disablement and data staging. Together, the install and process chain link the CSG addition to malicious activity. The outbound request is an attempt, not proof of receipt.",
+      "learning_notes": "Match a service addition, then connect its executable to malicious activity."
+    },
+    {
+      "variant": "C",
+      "delta_id": "d-service-add",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-01-C-evt-e8777f8e4b14",
+        "case-01-C-evt-7e3ba297d132"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-01-C-evt-364c72b52f51",
+        "case-01-C-evt-8f13ea5efe11",
+        "case-01-C-evt-387930dc1f13",
+        "case-01-C-evt-bc2281abeaff",
+        "case-01-C-evt-96f361a0b423",
+        "case-01-C-evt-9a104550d510",
+        "case-01-C-evt-a295c83d3c24",
+        "case-01-C-evt-4f4d3a06d38f",
+        "case-01-C-evt-2ddcfcafc256",
+        "case-01-C-evt-2f6269128f0d",
+        "case-01-C-evt-0b1dce39b846",
+        "case-01-C-evt-1bb2ee87c263"
+      ],
+      "require_all_evidence": true,
+      "explanation": "SCM 7045 directly supports the service addition on this host. Sysmon records the same service binary starting, then spawning PowerShell; event 4104 names this service in a persistence command and exposes Defender disablement and data staging. Together, the install and process chain link the CSG addition to malicious activity. The outbound request is an attempt, not proof of receipt.",
+      "learning_notes": "Match a service addition, then connect its executable to malicious activity."
+    },
+    {
+      "variant": "D",
+      "delta_id": "d-service-add",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-01-D-evt-4cd30a8d246d",
+        "case-01-D-evt-2f3c72e5d3fc"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-01-D-evt-2dc01d9a6a47",
+        "case-01-D-evt-817fa12d83a8",
+        "case-01-D-evt-e59616edc8c5",
+        "case-01-D-evt-ef885e64c86d",
+        "case-01-D-evt-0ced247f07e9",
+        "case-01-D-evt-badca6d8c690",
+        "case-01-D-evt-eedfe23cfc62",
+        "case-01-D-evt-5fdec7be011e",
+        "case-01-D-evt-ceb0dbb6e7e1",
+        "case-01-D-evt-f6fe16cd4111",
+        "case-01-D-evt-323f53d3eeb7",
+        "case-01-D-evt-1722fd5857ec"
+      ],
+      "require_all_evidence": true,
+      "explanation": "SCM 7045 directly supports the service addition on this host. Sysmon records the same service binary starting, then spawning PowerShell; event 4104 names this service in a persistence command and exposes Defender disablement and data staging. Together, the install and process chain link the CSG addition to malicious activity. The outbound request is an attempt, not proof of receipt.",
+      "learning_notes": "Match a service addition, then connect its executable to malicious activity."
+    },
+    {
+      "variant": "E",
+      "delta_id": "d-service-add",
+      "expected_classification": "CONSISTENT",
+      "required_evidence_ids": [
+        "case-01-E-evt-2531423c3403",
+        "case-01-E-evt-b68491b13539"
+      ],
+      "acceptable_evidence_ids": [],
+      "prohibited_distractor_ids": [
+        "case-01-E-evt-4074f7a59c06",
+        "case-01-E-evt-c77d476ace3e",
+        "case-01-E-evt-00fd037b267d",
+        "case-01-E-evt-e9c9411260d8",
+        "case-01-E-evt-c3e9cad67afa",
+        "case-01-E-evt-5c4957d67fe7",
+        "case-01-E-evt-14a1c733ab45",
+        "case-01-E-evt-6a16e1b34e6e",
+        "case-01-E-evt-d29f87300c10",
+        "case-01-E-evt-13397670d4fd",
+        "case-01-E-evt-c6c198b64f3f",
+        "case-01-E-evt-ea36b4310e62"
+      ],
+      "require_all_evidence": true,
+      "explanation": "SCM 7045 directly supports the service addition on this host. Sysmon records the same service binary starting, then spawning PowerShell; event 4104 names this service in a persistence command and exposes Defender disablement and data staging. Together, the install and process chain link the CSG addition to malicious activity. The outbound request is an attempt, not proof of receipt.",
+      "learning_notes": "Match a service addition, then connect its executable to malicious activity."
+    }
+  ]
+}

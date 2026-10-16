@@ -1,0 +1,638 @@
+/* Theme tokens also style menus, raw records, and the instructor console. */
+:root { --wazuh-accent: #58a6ed; --wazuh-panel: #1d2533; --wazuh-raised: #263243; --wazuh-input: #151d29; --wazuh-line: #3a485d; --wazuh-ink: #e6edf6; --wazuh-muted: #acb9ca; --wazuh-hover: #283d55; }
+:root[data-theme="light"] {
+  color-scheme: light;
+  --canvas: #f3f5f8; --surface: #fff; --raised: #edf1f6; --input: #fff;
+  --ink: #182638; --muted: #465c74; --soft: #526980; --line: #cfd8e3;
+  --green: #176b4c; --green-deep: #e7f4ed; --red: #9c3047; --red-deep: #faeaf0;
+  --blue: #165f9c; --blue-deep: #e8f2fc; --amber: #805916; --shadow: 0 10px 30px #1733520a;
+  --wazuh-accent: #006bb4; --wazuh-panel: #fff; --wazuh-raised: #f5f7fa;
+  --wazuh-input: #fff; --wazuh-line: #d3dae6; --wazuh-ink: #252d3a; --wazuh-muted: #506079; --wazuh-hover: #eef6fc;
+}
+.theme-toggle { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 36px; padding: 7px 10px; border: 1px solid var(--line); color: var(--ink); background: var(--surface); font-size: 12px; white-space: nowrap; }
+.theme-toggle:hover { border-color: var(--blue); color: var(--blue); }
+.entry-brand > .presentation-link { margin-left: auto; }
+.entry-brand > .theme-toggle { margin-left: 0; }
+.presentation-link { display: inline-flex; align-items: center; gap: 9px; min-height: 37px; padding: 8px 12px; border: 1px solid #65508a; border-radius: 9px; color: #dfd4f6; background: linear-gradient(120deg, #302544, #1b263a); font-size: 12px; font-weight: 600; box-shadow: inset 0 1px #ffffff0d; }
+.presentation-link > svg:first-child { color: #c2a2ff; }
+.presentation-link > svg:last-child { color: #9cb9dc; transition: transform .2s ease; }
+.presentation-link:hover { border-color: #ac8fe8; color: #fff; background: linear-gradient(120deg, #3d2d5b, #20344e); box-shadow: 0 6px 24px #6c4c9a30; transform: translateY(-1px); }
+.presentation-link:hover > svg:last-child { transform: translateX(3px); }
+.instructor-theme { position: absolute; top: 24px; right: 24px; }
+.research-intro { margin: 0 0 25px; color: var(--muted); font-size: 16px; line-height: 1.75; }
+.briefing-main h3.case-story-heading { margin: 22px 0 10px; font-size: 19px; color: var(--ink); }
+.briefing-main h2 { margin-top: 18px; }
+.briefing-lead { margin-bottom: 20px; }
+
+/* Light surfaces and readable text for every existing component. */
+:root[data-theme="light"] .notice-error,
+:root[data-theme="light"] .form-error,
+:root[data-theme="light"] .instructor-error,
+:root[data-theme="light"] .entry-shell::after,
+:root[data-theme="light"] .brand-icon,
+:root[data-theme="light"] .lab-brand > span,
+:root[data-theme="light"] .archived-pill,
+:root[data-theme="light"] .entry-points > div > span,
+:root[data-theme="light"] .join-card,
+:root[data-theme="light"] .user-avatar,
+:root[data-theme="light"] .case-progress-card,
+:root[data-theme="light"] .case-num,
+:root[data-theme="light"] .difficulty-chip,
+:root[data-theme="light"] .tab-index,
+:root[data-theme="light"] .stage-coach,
+:root[data-theme="light"] .briefing-main::before,
+:root[data-theme="light"] .briefing-observation,
+:root[data-theme="light"] .tour-tabs,
+:root[data-theme="light"] .tour-snapshot,
+:root[data-theme="light"] .tour-snapshot-link,
+:root[data-theme="light"] .tour-transition,
+:root[data-theme="light"] .tour-record-nav button,
+:root[data-theme="light"] .tour-footer button,
+:root[data-theme="light"] .tour-log-schema,
+:root[data-theme="light"] .briefing-check-options button,
+:root[data-theme="light"] .briefing-check-feedback,
+:root[data-theme="light"] .source-badge,
+:root[data-theme="light"] .health-chip,
+:root[data-theme="light"] .timeline-transition-marker,
+:root[data-theme="light"] .csg-cluster-details,
+:root[data-theme="light"] .snapshot-pick-row button,
+:root[data-theme="light"] .category-strip button,
+:root[data-theme="light"] .inventory-pagination button,
+:root[data-theme="light"] .results-topline button,
+:root[data-theme="light"] .delta-count,
+:root[data-theme="light"] .transition-count,
+:root[data-theme="light"] .delta-item,
+:root[data-theme="light"] .delta-item-head > button,
+:root[data-theme="light"] .operation-chip,
+:root[data-theme="light"] .transition-sequence,
+:root[data-theme="light"] .transition-category,
+:root[data-theme="light"] .wazuh-banner,
+:root[data-theme="light"] .wazuh-mark,
+:root[data-theme="light"] .wazuh-disconnected,
+:root[data-theme="light"] .search-playbook,
+:root[data-theme="light"] .investigation-context,
+:root[data-theme="light"] .query-panel,
+:root[data-theme="light"] .query-line,
+:root[data-theme="light"] .clear-search-filters,
+:root[data-theme="light"] .histogram-panel,
+:root[data-theme="light"] .active-filter-summary > button,
+:root[data-theme="light"] .active-filter-summary > span,
+:root[data-theme="light"] .event-results,
+:root[data-theme="light"] .event-detail-drawer,
+:root[data-theme="light"] .drawer-head button,
+:root[data-theme="light"] .detail-actions button,
+:root[data-theme="light"] .provenance-chip,
+:root[data-theme="light"] .raw-toggle,
+:root[data-theme="light"] .raw-json,
+:root[data-theme="light"] .drawer-collect,
+:root[data-theme="light"] .event-dialog,
+:root[data-theme="light"] .target-icon,
+:root[data-theme="light"] .concept-icon,
+:root[data-theme="light"] .observed-state-card,
+:root[data-theme="light"] .observed-state-card > div > span,
+:root[data-theme="light"] .transition-state-card .observed-transition-row,
+:root[data-theme="light"] .evidence-code,
+:root[data-theme="light"] .classification-options button,
+:root[data-theme="light"] .classification-options button > i,
+:root[data-theme="light"] .reveal-card,
+:root[data-theme="light"] .reveal-icon,
+:root[data-theme="light"] .reveal-compare,
+:root[data-theme="light"] .result-pill,
+:root[data-theme="light"] .summary-diagram,
+:root[data-theme="light"] .summary-callout,
+:root[data-theme="light"] .instructor-login,
+:root[data-theme="light"] .instructor-lock,
+:root[data-theme="light"] .instructor-login form > button,
+:root[data-theme="light"] .instructor-header button,
+:root[data-theme="light"] .instructor-header > div > a,
+:root[data-theme="light"] .lab-state,
+:root[data-theme="light"] .control-actions > button,
+:root[data-theme="light"] .case-toggles button,
+:root[data-theme="light"] .case-toggles button > span,
+:root[data-theme="light"] .reset-student { border: 1px solid var(--line); }
+:root[data-theme="light"] .notice-error,
+:root[data-theme="light"] .form-error,
+:root[data-theme="light"] .instructor-error,
+:root[data-theme="light"] .entry-shell::before,
+:root[data-theme="light"] .brand-icon,
+:root[data-theme="light"] .lab-brand > span,
+:root[data-theme="light"] .case-rail-item.active,
+:root[data-theme="light"] .case-rail-item.active .case-num,
+:root[data-theme="light"] .timeline-transition-marker:hover,
+:root[data-theme="light"] .timeline-transition-marker.focused,
+:root[data-theme="light"] .operation-chip.remove,
+:root[data-theme="light"] .classification-options .status-contradicted.selected,
+:root[data-theme="light"] .rejected-mark,
+:root[data-theme="light"] .instructor-entry,
+:root[data-theme="light"] .instructor-lock,
+:root[data-theme="light"] .class-dist > div:nth-child(4) i { background: var(--red-deep); }
+:root[data-theme="light"] .notice-error,
+:root[data-theme="light"] .form-error,
+:root[data-theme="light"] .instructor-error,
+:root[data-theme="light"] .brand-icon,
+:root[data-theme="light"] .lab-brand > span,
+:root[data-theme="light"] .entry-brand strong b,
+:root[data-theme="light"] .join-card label:not(.checkbox-row),
+:root[data-theme="light"] .instructor-login label,
+:root[data-theme="light"] .lab-brand strong,
+:root[data-theme="light"] .user-avatar,
+:root[data-theme="light"] .rail-section-label > span,
+:root[data-theme="light"] .case-rail-item.active .case-num,
+:root[data-theme="light"] .rail-session-line,
+:root[data-theme="light"] .journey-tab.active .tab-index,
+:root[data-theme="light"] .stage-coach-label,
+:root[data-theme="light"] .stage-coach > button:hover,
+:root[data-theme="light"] .briefing-lead,
+:root[data-theme="light"] .briefing-observation p,
+:root[data-theme="light"] .briefing-task .side-label,
+:root[data-theme="light"] .tour-tabs button.active,
+:root[data-theme="light"] .tour-content strong,
+:root[data-theme="light"] .tour-snapshot.after > span,
+:root[data-theme="light"] .tour-open:hover,
+:root[data-theme="light"] .tour-log-schema code,
+:root[data-theme="light"] .briefing-check summary b,
+:root[data-theme="light"] .briefing-check-options button,
+:root[data-theme="light"] .briefing-check-options button.chosen,
+:root[data-theme="light"] .briefing-check-options button:first-child.chosen,
+:root[data-theme="light"] .briefing-check-feedback p,
+:root[data-theme="light"] .timeline-node.focus b,
+:root[data-theme="light"] .timeline-transition-marker,
+:root[data-theme="light"] .timeline-transition-marker:hover,
+:root[data-theme="light"] .timeline-transition-marker.focused,
+:root[data-theme="light"] .csg-cluster-details b,
+:root[data-theme="light"] .snapshot-pick-row button:nth-child(2) small,
+:root[data-theme="light"] .category-strip button,
+:root[data-theme="light"] .category-strip button:hover,
+:root[data-theme="light"] .category-strip button.active,
+:root[data-theme="light"] .inventory-table td:first-child b,
+:root[data-theme="light"] .attribute-inline,
+:root[data-theme="light"] .inventory-pagination button,
+:root[data-theme="light"] .results-topline button,
+:root[data-theme="light"] .operation-chip,
+:root[data-theme="light"] .operation-chip.remove,
+:root[data-theme="light"] .delta-object,
+:root[data-theme="light"] .delta-compare b,
+:root[data-theme="light"] .transition-object b,
+:root[data-theme="light"] .transition-change b,
+:root[data-theme="light"] .tray-event-main b,
+:root[data-theme="light"] .wazuh-mark,
+:root[data-theme="light"] .wazuh-disconnected,
+:root[data-theme="light"] .search-playbook-grid b,
+:root[data-theme="light"] .investigation-context select,
+:root[data-theme="light"] .clear-search-filters,
+:root[data-theme="light"] .active-filter-summary > button,
+:root[data-theme="light"] .active-filter-summary > span,
+:root[data-theme="light"] .active-filter-summary > button:hover,
+:root[data-theme="light"] .results-topline,
+:root[data-theme="light"] .results-topline b,
+:root[data-theme="light"] .event-row-main > span,
+:root[data-theme="light"] .empty-events b,
+:root[data-theme="light"] .drawer-head b,
+:root[data-theme="light"] .drawer-head button,
+:root[data-theme="light"] .drawer-head button:hover,
+:root[data-theme="light"] .detail-summary b,
+:root[data-theme="light"] .detail-actions button,
+:root[data-theme="light"] .detail-actions button:hover,
+:root[data-theme="light"] .provenance-chip b,
+:root[data-theme="light"] .event-message,
+:root[data-theme="light"] .detail-group b,
+:root[data-theme="light"] .raw-toggle,
+:root[data-theme="light"] .drawer-collect,
+:root[data-theme="light"] .observed-state-card > b,
+:root[data-theme="light"] .observed-state-card > div > span,
+:root[data-theme="light"] .observed-transition-row b,
+:root[data-theme="light"] .evidence-sheet-row b,
+:root[data-theme="light"] .classification-options b,
+:root[data-theme="light"] .explanation-label,
+:root[data-theme="light"] .explanation-label textarea,
+:root[data-theme="light"] .reveal-top h3,
+:root[data-theme="light"] .reveal-compare b,
+:root[data-theme="light"] .evidence-review-list b,
+:root[data-theme="light"] .learning-note > span,
+:root[data-theme="light"] .summary-callout b,
+:root[data-theme="light"] .instructor-login form > button,
+:root[data-theme="light"] .instructor-header button,
+:root[data-theme="light"] .instructor-header > div > a,
+:root[data-theme="light"] .instructor-stats b,
+:root[data-theme="light"] .control-actions > button,
+:root[data-theme="light"] .case-toggles button.enabled,
+:root[data-theme="light"] .roster-table td,
+:root[data-theme="light"] .history-row code { color: var(--ink); }
+:root[data-theme="light"] .entry-shell,
+:root[data-theme="light"] .lab-topbar,
+:root[data-theme="light"] .case-rail,
+:root[data-theme="light"] .case-progress-card,
+:root[data-theme="light"] .workspace-tabs,
+:root[data-theme="light"] .tour-tabs,
+:root[data-theme="light"] .tour-snapshot-link,
+:root[data-theme="light"] .tour-log-schema,
+:root[data-theme="light"] .tour-footer,
+:root[data-theme="light"] .category-strip button,
+:root[data-theme="light"] .query-panel,
+:root[data-theme="light"] .query-line,
+:root[data-theme="light"] .filter-line select,
+:root[data-theme="light"] .time-range-controls select,
+:root[data-theme="light"] .time-range-controls input,
+:root[data-theme="light"] .histogram-panel,
+:root[data-theme="light"] .event-results,
+:root[data-theme="light"] .raw-json,
+:root[data-theme="light"] .event-dialog::backdrop,
+:root[data-theme="light"] .instructor-header { background: var(--surface); }
+:root[data-theme="light"] .archived-pill,
+:root[data-theme="light"] .briefing-observation .side-label,
+:root[data-theme="light"] .tour-snapshot > span,
+:root[data-theme="light"] .tour-transition > code,
+:root[data-theme="light"] .view-intro .section-kicker,
+:root[data-theme="light"] .source-badge,
+:root[data-theme="light"] .health-chip,
+:root[data-theme="light"] .timeline-node b,
+:root[data-theme="light"] .csg-cluster-details time,
+:root[data-theme="light"] .csg-cluster-details small,
+:root[data-theme="light"] .delta-item-head > span:nth-child(2),
+:root[data-theme="light"] .transition-history-head .side-label,
+:root[data-theme="light"] .transition-category,
+:root[data-theme="light"] .transition-source,
+:root[data-theme="light"] .investigation-context label,
+:root[data-theme="light"] .active-filter-summary > span,
+:root[data-theme="light"] .raw-json,
+:root[data-theme="light"] .drawer-collect.selected,
+:root[data-theme="light"] .observed-state-card > div,
+:root[data-theme="light"] .reveal-top .side-label,
+:root[data-theme="light"] .learning-note b,
+:root[data-theme="light"] .summary-diagram > svg,
+:root[data-theme="light"] .roster-status.online { color: var(--green); }
+:root[data-theme="light"] .archived-pill,
+:root[data-theme="light"] .entry-copy h1 em,
+:root[data-theme="light"] .entry-points > div > span,
+:root[data-theme="light"] .case-num.done,
+:root[data-theme="light"] .tab-count,
+:root[data-theme="light"] .briefing-observation,
+:root[data-theme="light"] .tour-snapshot,
+:root[data-theme="light"] .tour-transition,
+:root[data-theme="light"] .tour-record-nav button,
+:root[data-theme="light"] .tour-footer button,
+:root[data-theme="light"] .briefing-check-options button.chosen,
+:root[data-theme="light"] .briefing-check-feedback,
+:root[data-theme="light"] .source-badge,
+:root[data-theme="light"] .timeline-card,
+:root[data-theme="light"] .health-chip,
+:root[data-theme="light"] .track-line,
+:root[data-theme="light"] .timeline-transition-marker,
+:root[data-theme="light"] .timeline-transition-marker > i,
+:root[data-theme="light"] .csg-cluster-details,
+:root[data-theme="light"] .snapshot-pick-row button,
+:root[data-theme="light"] .snapshot-pick-row button.selected,
+:root[data-theme="light"] .category-strip button:hover,
+:root[data-theme="light"] .category-strip button.active,
+:root[data-theme="light"] .delta-count,
+:root[data-theme="light"] .transition-count,
+:root[data-theme="light"] .delta-item,
+:root[data-theme="light"] .delta-item-head > button,
+:root[data-theme="light"] .operation-chip,
+:root[data-theme="light"] .transition-row:hover,
+:root[data-theme="light"] .transition-row.is-focused,
+:root[data-theme="light"] .transition-sequence,
+:root[data-theme="light"] .transition-category,
+:root[data-theme="light"] .tray-title > span,
+:root[data-theme="light"] .investigation-context select,
+:root[data-theme="light"] .active-filter-summary > span,
+:root[data-theme="light"] .event-collect:hover,
+:root[data-theme="light"] .event-collect.selected,
+:root[data-theme="light"] .drawer-collect,
+:root[data-theme="light"] .drawer-collect:hover,
+:root[data-theme="light"] .drawer-collect.selected,
+:root[data-theme="light"] .target-icon,
+:root[data-theme="light"] .concept-icon,
+:root[data-theme="light"] .observed-state-card,
+:root[data-theme="light"] .observed-state-card > div > span,
+:root[data-theme="light"] .transition-state-card .observed-transition-row,
+:root[data-theme="light"] .classification-options button.selected,
+:root[data-theme="light"] .reveal-card,
+:root[data-theme="light"] .reveal-icon,
+:root[data-theme="light"] .reveal-compare,
+:root[data-theme="light"] .result-pill,
+:root[data-theme="light"] .accepted-mark,
+:root[data-theme="light"] .rejected-mark,
+:root[data-theme="light"] .learning-note,
+:root[data-theme="light"] .final-summary,
+:root[data-theme="light"] .summary-diagram,
+:root[data-theme="light"] .summary-callout,
+:root[data-theme="light"] .lab-state.is-active,
+:root[data-theme="light"] .control-actions > button.start,
+:root[data-theme="light"] .case-toggles button.enabled,
+:root[data-theme="light"] .progress-mark,
+:root[data-theme="light"] .class-dist i { background: var(--green-deep); }
+:root[data-theme="light"] .eyebrow,
+:root[data-theme="light"] .breadcrumb-label span,
+:root[data-theme="light"] .tour-snapshot time,
+:root[data-theme="light"] .tour-transition time,
+:root[data-theme="light"] .tour-record-nav,
+:root[data-theme="light"] .briefing-check summary small,
+:root[data-theme="light"] .timeline-title .side-label,
+:root[data-theme="light"] .timeline-node small,
+:root[data-theme="light"] .timeline-range,
+:root[data-theme="light"] .timeline-legend,
+:root[data-theme="light"] .csg-cluster-details > div,
+:root[data-theme="light"] .csg-cluster-details > div > button,
+:root[data-theme="light"] .snapshot-pick-row small,
+:root[data-theme="light"] .snapshot-pick-row svg,
+:root[data-theme="light"] .delta-compare small,
+:root[data-theme="light"] .delta-compare > svg,
+:root[data-theme="light"] .delta-observation,
+:root[data-theme="light"] .empty-delta,
+:root[data-theme="light"] .transition-time,
+:root[data-theme="light"] .transition-object small,
+:root[data-theme="light"] .transition-change small,
+:root[data-theme="light"] .observed-state-card > small,
+:root[data-theme="light"] .transition-state-card .observed-transition-row > span,
+:root[data-theme="light"] .observed-transition-row small,
+:root[data-theme="light"] .score-correct small,
+:root[data-theme="light"] .score-review small,
+:root[data-theme="light"] .reveal-compare small,
+:root[data-theme="light"] .reveal-compare > svg,
+:root[data-theme="light"] .reveal-card > p,
+:root[data-theme="light"] .evidence-review-list small,
+:root[data-theme="light"] .summary-diagram span,
+:root[data-theme="light"] .final-summary li,
+:root[data-theme="light"] .summary-callout small,
+:root[data-theme="light"] .progress-empty { color: var(--muted); }
+:root[data-theme="light"] .entry-points > div:nth-child(2) > span,
+:root[data-theme="light"] .entry-points > div:nth-child(3) > span,
+:root[data-theme="light"] .case-rail-item:hover,
+:root[data-theme="light"] .case-rail-item.active,
+:root[data-theme="light"] .case-rail-item.active .case-num,
+:root[data-theme="light"] .case-num.done,
+:root[data-theme="light"] .journey-tab:hover,
+:root[data-theme="light"] .journey-tab.active,
+:root[data-theme="light"] .journey-tab.active .tab-index,
+:root[data-theme="light"] .tour-tabs button.active,
+:root[data-theme="light"] .tour-snapshot.after,
+:root[data-theme="light"] .tour-footer button,
+:root[data-theme="light"] .briefing-check,
+:root[data-theme="light"] .briefing-check-options button.chosen,
+:root[data-theme="light"] .briefing-check-options button:first-child.chosen,
+:root[data-theme="light"] .briefing-check-feedback.review,
+:root[data-theme="light"] .timeline-card,
+:root[data-theme="light"] .health-chip.review,
+:root[data-theme="light"] .timeline-node.focus .node-dot,
+:root[data-theme="light"] .timeline-transition-marker:hover,
+:root[data-theme="light"] .timeline-transition-marker.focused,
+:root[data-theme="light"] .snapshot-pick-row button:nth-child(2),
+:root[data-theme="light"] .snapshot-pick-row button.selected,
+:root[data-theme="light"] .snapshot-pick-row button:nth-child(2).selected,
+:root[data-theme="light"] .category-strip button:hover,
+:root[data-theme="light"] .category-strip button.active,
+:root[data-theme="light"] .delta-item:hover,
+:root[data-theme="light"] .delta-item.selected,
+:root[data-theme="light"] .operation-chip.remove,
+:root[data-theme="light"] .transition-history,
+:root[data-theme="light"] .investigation-context select,
+:root[data-theme="light"] .filter-line select,
+:root[data-theme="light"] .time-range-controls select,
+:root[data-theme="light"] .time-range-controls input,
+:root[data-theme="light"] .clear-search-filters:hover,
+:root[data-theme="light"] .active-filter-summary > button:hover,
+:root[data-theme="light"] .active-filter-summary > span,
+:root[data-theme="light"] .event-collect:hover,
+:root[data-theme="light"] .event-collect.selected,
+:root[data-theme="light"] .drawer-collect.selected,
+:root[data-theme="light"] .classification-options button:hover,
+:root[data-theme="light"] .classification-options button.selected,
+:root[data-theme="light"] .classification-options .status-contradicted.selected,
+:root[data-theme="light"] .classification-options .status-unexplained.selected,
+:root[data-theme="light"] .classification-options .status-partially_explained.selected,
+:root[data-theme="light"] .classification-options .status-insufficient_evidence.selected,
+:root[data-theme="light"] .result-pill.review,
+:root[data-theme="light"] .final-summary,
+:root[data-theme="light"] .lab-state.is-active,
+:root[data-theme="light"] .control-actions > button.start,
+:root[data-theme="light"] .case-toggles button.enabled,
+:root[data-theme="light"] .reset-student:hover { border-color: var(--line); }
+:root[data-theme="light"] .entry-points > div:nth-child(2) > span,
+:root[data-theme="light"] .entry-points > div:nth-child(3) > span,
+:root[data-theme="light"] .join-card,
+:root[data-theme="light"] .join-card::before,
+:root[data-theme="light"] .user-avatar,
+:root[data-theme="light"] .case-progress-track,
+:root[data-theme="light"] .case-rail-item:hover,
+:root[data-theme="light"] .case-num,
+:root[data-theme="light"] .difficulty-chip,
+:root[data-theme="light"] .icon-action,
+:root[data-theme="light"] .journey-tab:hover,
+:root[data-theme="light"] .journey-tab.active,
+:root[data-theme="light"] .tab-index,
+:root[data-theme="light"] .journey-tab.active .tab-index,
+:root[data-theme="light"] .stage-coach,
+:root[data-theme="light"] .workspace-footer i,
+:root[data-theme="light"] .briefing-main,
+:root[data-theme="light"] .evidence-tour,
+:root[data-theme="light"] .tour-tabs button:hover,
+:root[data-theme="light"] .tour-tabs button.active,
+:root[data-theme="light"] .tour-snapshot.after,
+:root[data-theme="light"] .tour-footer button,
+:root[data-theme="light"] .briefing-check,
+:root[data-theme="light"] .briefing-check-options button,
+:root[data-theme="light"] .briefing-check-options button:hover,
+:root[data-theme="light"] .snapshot-pick-row button:nth-child(2),
+:root[data-theme="light"] .snapshot-pick-row button:nth-child(2).selected,
+:root[data-theme="light"] .inventory-table th,
+:root[data-theme="light"] .inventory-table tr:hover td,
+:root[data-theme="light"] .category-tag,
+:root[data-theme="light"] .inventory-pagination button,
+:root[data-theme="light"] .results-topline button,
+:root[data-theme="light"] .tray-empty,
+:root[data-theme="light"] .wazuh-banner,
+:root[data-theme="light"] .wazuh-mark,
+:root[data-theme="light"] .wazuh-disconnected,
+:root[data-theme="light"] .search-playbook,
+:root[data-theme="light"] .investigation-context,
+:root[data-theme="light"] .clear-search-filters,
+:root[data-theme="light"] .clear-search-filters:hover,
+:root[data-theme="light"] .active-filter-summary > button,
+:root[data-theme="light"] .active-filter-summary > span,
+:root[data-theme="light"] .active-filter-summary > button:hover,
+:root[data-theme="light"] .event-grid-head,
+:root[data-theme="light"] .event-row:hover,
+:root[data-theme="light"] .event-row.open,
+:root[data-theme="light"] .event-detail-drawer,
+:root[data-theme="light"] .drawer-head button,
+:root[data-theme="light"] .detail-actions button,
+:root[data-theme="light"] .provenance-chip,
+:root[data-theme="light"] .raw-toggle,
+:root[data-theme="light"] .event-dialog,
+:root[data-theme="light"] .evidence-code,
+:root[data-theme="light"] .classification-options button,
+:root[data-theme="light"] .classification-options button > i > span,
+:root[data-theme="light"] .classification-options button:hover,
+:root[data-theme="light"] .classification-options .status-insufficient_evidence.selected,
+:root[data-theme="light"] .instructor-login form > button,
+:root[data-theme="light"] .instructor-header button,
+:root[data-theme="light"] .instructor-header > div > a,
+:root[data-theme="light"] .case-toggles button,
+:root[data-theme="light"] .roster-table th,
+:root[data-theme="light"] .roster-status i,
+:root[data-theme="light"] .reset-student,
+:root[data-theme="light"] .class-dist > div > div,
+:root[data-theme="light"] .class-dist > div:nth-child(5) i,
+:root[data-theme="light"] .history-head { background: var(--raised); }
+:root[data-theme="light"] .entry-footer,
+:root[data-theme="light"] .briefing-notes,
+:root[data-theme="light"] .tour-record-nav,
+:root[data-theme="light"] .inventory-table td,
+:root[data-theme="light"] .time-range-controls,
+:root[data-theme="light"] .evidence-review-list > div { border-top: 1px solid var(--line); }
+:root[data-theme="light"] .lab-topbar,
+:root[data-theme="light"] .tour-log-schema > div,
+:root[data-theme="light"] .csg-cluster-details > div,
+:root[data-theme="light"] .csg-cluster-details > button,
+:root[data-theme="light"] .transition-row,
+:root[data-theme="light"] .results-topline,
+:root[data-theme="light"] .event-grid-head,
+:root[data-theme="light"] .event-row,
+:root[data-theme="light"] .detail-group,
+:root[data-theme="light"] .roster-table td,
+:root[data-theme="light"] .history-row,
+:root[data-theme="light"] .search-playbook-grid > div { border-bottom: 1px solid var(--line); }
+:root[data-theme="light"] .top-crumb b,
+:root[data-theme="light"] .top-live,
+:root[data-theme="light"] .case-num,
+:root[data-theme="light"] .difficulty-chip,
+:root[data-theme="light"] .tour-snapshot.after time,
+:root[data-theme="light"] .timeline-node.focus small,
+:root[data-theme="light"] .category-strip b,
+:root[data-theme="light"] .inventory-table th,
+:root[data-theme="light"] .category-tag,
+:root[data-theme="light"] .attribute-inline i,
+:root[data-theme="light"] .wazuh-banner > div:nth-child(2) > span,
+:root[data-theme="light"] .search-playbook summary small,
+:root[data-theme="light"] .search-playbook-grid i,
+:root[data-theme="light"] .search-playbook-grid p,
+:root[data-theme="light"] .query-label > span,
+:root[data-theme="light"] .query-label small,
+:root[data-theme="light"] .query-line,
+:root[data-theme="light"] .live-search-state,
+:root[data-theme="light"] .filter-line label,
+:root[data-theme="light"] .time-range-controls label,
+:root[data-theme="light"] .query-syntax,
+:root[data-theme="light"] .histogram-head,
+:root[data-theme="light"] .histogram-head small,
+:root[data-theme="light"] .histogram-axis,
+:root[data-theme="light"] .active-filter-summary > b,
+:root[data-theme="light"] .results-topline span,
+:root[data-theme="light"] .event-grid-head,
+:root[data-theme="light"] .event-expand,
+:root[data-theme="light"] .event-collect,
+:root[data-theme="light"] .empty-events,
+:root[data-theme="light"] .wazuh-note,
+:root[data-theme="light"] .drawer-head .side-label,
+:root[data-theme="light"] .detail-summary small,
+:root[data-theme="light"] .provenance-chip span,
+:root[data-theme="light"] .detail-group small,
+:root[data-theme="light"] .classification-options small,
+:root[data-theme="light"] .case-toggles button,
+:root[data-theme="light"] .roster-table th,
+:root[data-theme="light"] .roster-status,
+:root[data-theme="light"] .history-head { color: var(--blue); }
+:root[data-theme="light"] .briefing-main,
+:root[data-theme="light"] .evidence-tour { border-top-color: var(--line); }
+:root[data-theme="light"] .briefing-check-options button:first-child.chosen,
+:root[data-theme="light"] .briefing-check-feedback.review,
+:root[data-theme="light"] .health-chip.review,
+:root[data-theme="light"] .classification-options .status-unexplained.selected,
+:root[data-theme="light"] .classification-options .status-partially_explained.selected,
+:root[data-theme="light"] .result-pill.review,
+:root[data-theme="light"] .lab-state,
+:root[data-theme="light"] .control-actions > button,
+:root[data-theme="light"] .progress-mark.review,
+:root[data-theme="light"] .class-dist > div:nth-child(2) i,
+:root[data-theme="light"] .class-dist > div:nth-child(3) i { background: var(--amber-deep); }
+:root[data-theme="light"] .briefing-check-feedback.review p { color: var(--amber); }
+:root[data-theme="light"] .node-dot { border: 3px solid var(--line); }
+:root[data-theme="light"] .tray-empty,
+:root[data-theme="light"] .empty-tray { border: 1px dashed var(--line); }
+:root[data-theme="light"] .event-time,
+:root[data-theme="light"] .host-other { color: var(--blue) !important; }
+:root[data-theme="light"] .host-same { color: var(--green) !important; }
+:root[data-theme="light"] .event-object { color: var(--ink) !important; }
+
+:root[data-theme="light"] .entry-shell { background: var(--canvas); }
+:root[data-theme="light"] .entry-shell::before { background: radial-gradient(ellipse at 8% 18%, #9c30470b, transparent 50%), radial-gradient(ellipse at 70% 45%, #165f9c0c, transparent 52%), radial-gradient(ellipse at 35% 100%, #176b4c0d, transparent 40%); }
+:root[data-theme="light"] .instructor-entry { background: var(--canvas); }
+:root[data-theme="light"] .entry-copy h1 em { background: linear-gradient(100deg, #176b4c, #165f9c); background-clip: text; }
+:root[data-theme="light"] .briefing-main { background: linear-gradient(145deg, #fff5f6, #fff 45%); border-top-color: #9c3047; }
+:root[data-theme="light"] .evidence-tour { background: linear-gradient(145deg, #eef8f3, #fff 50%); }
+:root[data-theme="light"] .journey-tab.active { color: var(--blue); border-bottom-color: var(--blue); }
+:root[data-theme="light"] .case-rail-item.active { border-color: #dfb6c0; background: var(--red-deep); }
+:root[data-theme="light"] .case-rail-item.active b { color: var(--red); }
+:root[data-theme="light"] .drawer-collect { color: var(--green); background: var(--green-deep); border-color: #a6cfb8; }
+:root[data-theme="light"] .notice-error, :root[data-theme="light"] .form-error { color: var(--red); background: var(--red-deep); }
+
+/* Wazuh Threat hunting / Events: blue application chrome, neutral documents. */
+.wazuh-view { color: var(--wazuh-ink); --blue: var(--wazuh-accent); }
+.wazuh-banner { min-height: 65px; gap: 25px; padding: 13px 20px; border: 0; border-radius: 5px 5px 0 0; background: #006bb4; color: white; }
+.wazuh-wordmark { font-size: 30px; font-weight: 600; letter-spacing: -1.5px; line-height: 1; }
+.wazuh-location { display: flex; align-items: center; gap: 10px; padding-left: 24px; border-left: 1px solid #ffffff50; }
+.wazuh-location > span { font-size: 14px; }
+.wazuh-banner .wazuh-location h2 { margin: 0; color: white; font-size: 17px; font-weight: 600; letter-spacing: 0; }
+.wazuh-source { margin-left: auto; font-size: 12px; color: #e3f3ff; }
+.wazuh-view :is(.search-playbook,.investigation-context,.query-panel,.histogram-panel,.event-results,.event-detail-drawer) { border-color: var(--wazuh-line); border-radius: 4px; background: var(--wazuh-panel); box-shadow: none; }
+.wazuh-view .query-panel { border-top: 0; padding-top: 16px; }
+.wazuh-view .search-playbook { border-radius: 0; border-top: 0; }
+.wazuh-view .search-playbook summary { padding: 10px 20px; color: var(--wazuh-accent); }
+.wazuh-view .investigation-context { background: var(--wazuh-raised); border-top: 0; border-radius: 0; padding-block: 10px; }
+.wazuh-view .investigation-context label { color: var(--wazuh-muted); }
+.wazuh-view .investigation-context select { border-color: var(--wazuh-line); background: var(--wazuh-input); color: var(--wazuh-ink); }
+.wazuh-view :is(.query-label > span,.query-label small,.filter-line label,.time-range-controls label,.histogram-head,.histogram-head small,.histogram-axis,.live-search-state,.search-playbook-grid p,.active-filter-summary > b,.results-topline,.results-topline span,.event-grid-head,.empty-events,.wazuh-note) { color: var(--wazuh-muted); }
+.wazuh-view .query-label > span { font-family: var(--sans); font-size: 14px; font-weight: 600; letter-spacing: 0; }
+.wazuh-view .query-line { border-color: var(--wazuh-line); border-radius: 4px; background: var(--wazuh-input); color: var(--wazuh-accent); }
+.wazuh-view .query-line:focus-within { border-color: var(--wazuh-accent); box-shadow: 0 0 0 2px color-mix(in srgb,var(--wazuh-accent) 18%,transparent); }
+.wazuh-view :is(.filter-line select,.time-range-controls select,.time-range-controls input,.clear-search-filters) { border-color: var(--wazuh-line); border-radius: 4px; background: var(--wazuh-input); color: var(--wazuh-ink); }
+.wazuh-view .time-range-controls { border-color: var(--wazuh-line); }
+.wazuh-view .histogram-bars { background: repeating-linear-gradient(0deg,transparent,transparent 19px,color-mix(in srgb,var(--wazuh-line) 35%,transparent) 20px); }
+.wazuh-view .histogram-bar { background: var(--wazuh-accent); border-radius: 0; }
+.wazuh-view .histogram-bar.selected { background: #36a2ef; }
+.wazuh-view .active-filter-summary > button { color: var(--wazuh-accent); border-color: var(--wazuh-line); background: var(--wazuh-hover); border-radius: 4px; }
+.wazuh-view .active-filter-summary > span { color: var(--wazuh-muted); border-color: var(--wazuh-line); background: var(--wazuh-raised); }
+.wazuh-view :is(.event-grid-head,.results-topline,.event-row) { border-color: var(--wazuh-line); }
+.wazuh-view .event-grid-head { background: var(--wazuh-raised); font-size: 11px; letter-spacing: 0; }
+.wazuh-view :is(.event-row:hover,.event-row.open) { background: var(--wazuh-hover); }
+.wazuh-view .event-row-main > span { color: var(--wazuh-ink); font-size: 12px; }
+.wazuh-view .event-time, .wazuh-view .event-object { color: var(--wazuh-ink) !important; }
+.wazuh-view .host-other { color: var(--wazuh-muted) !important; }
+.wazuh-view :is(.results-topline b,.empty-events b,.search-playbook-grid b) { color: var(--wazuh-ink); }
+.wazuh-view :is(.results-topline button,.event-collect) { border-color: var(--wazuh-line); background: var(--wazuh-input); color: var(--wazuh-accent); }
+.wazuh-view .event-detail-drawer { border-left: 3px solid var(--wazuh-accent); margin-top: 10px; }
+.wazuh-view :is(.drawer-head b,.drawer-info b,.detail-group b,.event-message,.provenance-chip b) { color: var(--wazuh-ink); }
+.wazuh-view :is(.drawer-head .side-label,.drawer-info small,.detail-group small,.provenance-chip span) { color: var(--wazuh-muted); }
+.wazuh-view :is(.drawer-head button,.detail-actions button,.provenance-chip,.raw-toggle) { color: var(--wazuh-accent); border-color: var(--wazuh-line); background: var(--wazuh-raised); }
+.wazuh-view :is(.detail-group,.drawer-info) { border-color: var(--wazuh-line); }
+.wazuh-view .raw-json { color: var(--wazuh-ink); border-color: var(--wazuh-line); background: var(--wazuh-input); scrollbar-color: var(--wazuh-line) var(--wazuh-input); }
+:root[data-theme="light"] .wazuh-banner { background: #006bb4; color: white; }
+:root[data-theme="light"] .wazuh-wordmark, :root[data-theme="light"] .wazuh-location > span, :root[data-theme="light"] .wazuh-banner h2 { color: white; }
+:root[data-theme="light"] .wazuh-source { color: #e3f3ff; }
+@media (max-width: 640px) {
+  .theme-toggle > span { display: none; }
+  .presentation-link { min-height: 34px; gap: 6px; padding: 7px 9px; font-size: 11px; }
+  .presentation-link > svg:first-child { width: 14px; }
+  .presentation-link > span { display: none; }
+  .wazuh-banner { gap: 12px; padding: 15px; }
+  .wazuh-wordmark { font-size: 26px; }
+  .wazuh-location { padding-left: 12px; gap: 7px; }
+  .wazuh-location > span { font-size: 12px; }
+  .wazuh-source { display: none; }
+  .research-intro { font-size: 15px; }
+}
+
+:root[data-theme="light"] .delta-detail-fields section { border-color: #d2e0d6; background: #f4f8f5; }
+:root[data-theme="light"] .delta-detail-fields section > b,
+:root[data-theme="light"] .delta-linked-observations > b { color: #294d39; }
+:root[data-theme="light"] .delta-detail-fields dt,
+:root[data-theme="light"] .delta-linked-observations time { color: #577867; }
+:root[data-theme="light"] .delta-detail-fields dd,
+:root[data-theme="light"] .delta-linked-observations > div { color: #30463a; }
+:root[data-theme="light"] .inventory-record-details summary { color: #12633c; }
+:root[data-theme="light"] .briefing-check-options button.selected-correct { border-color: #347653; background: #e6f4eb; color: #174d32; }
+:root[data-theme="light"] .briefing-check-options button.selected-review { border-color: #9a743c; background: #fbf1dd; color: #62430f; }
+:root[data-theme="light"] .case-rail { border-color: var(--line); scrollbar-color: #bdc8d5 transparent; }
+:root[data-theme="light"] .entry-author > strong { color: var(--ink); }
+:root[data-theme="light"] .entry-author > small { color: var(--muted); }
